@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moora Foods — Franchise Transition — Jessica Issa</title>
+<meta name="description" content="Overseeing the operational handover of a three-outlet Subway franchise portfolio — stakeholder mediation, POS retraining for 70+ staff, and a full sale timeline from feasibility to finalisation." />
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink" style="--proj-from:#0C1B12; --proj-to:#2E8B57;">
+
+<div id="cursor-preview" class="hidden md:flex fixed top-0 left-0 z-50 w-40 h-52 rounded-sm pointer-events-none opacity-0 items-end p-4 overflow-hidden">
+  <p id="cursor-preview-label" class="font-sans text-xs uppercase tracking-widest text-white/90"></p>
+</div>
+
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="../index.html" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="../index.html#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="../index.html#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="../index.html#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="../index.html#work" class="mobile-link">Work</a>
+    <a href="../index.html#about" class="mobile-link">About</a>
+    <a href="../index.html#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ CASE HERO ============ -->
+  <section class="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-10 pt-32 pb-14 max-w-[1600px] mx-auto">
+
+    <div class="reveal absolute top-28 right-6 md:right-10 font-serif text-[13vw] md:text-[9vw] leading-none text-ink/[0.06] dark:text-bone/[0.06] select-none pointer-events-none">
+      08
+    </div>
+
+    <div class="reveal flex items-center gap-3 mb-8">
+      <span class="w-2.5 h-2.5 rounded-full case-swatch"></span>
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50">Project 08 / 08 — Franchise Transition</p>
+    </div>
+
+    <h1 class="reveal font-serif leading-[1.02] tracking-tightest2 max-w-5xl" style="transition-delay:.06s">
+      <span class="block text-[9vw] md:text-[5vw]">Moora Foods —</span>
+      <span class="block text-[9vw] md:text-[5vw] italic">Franchise Transition</span>
+    </h1>
+
+    <div class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.14s">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Client</p>
+        <p class="font-sans text-sm">Moora Foods (Subway Franchise Group)</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Role</p>
+        <p class="font-sans text-sm">Strategic Operations Consultant</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Sector</p>
+        <p class="font-sans text-sm">F&amp;B / Franchising</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Year</p>
+        <p class="font-sans text-sm">2023</p>
+      </div>
+    </div>
+
+    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.22s">
+      Scroll ↓
+    </div>
+  </section>
+
+  <!-- ============ CONTEXT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Context</p>
+      </div>
+      <div class="max-w-3xl">
+        <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3]">
+          Moora Foods operated three Subway franchise outlets across Dubai, with over 70 staff and a decade-plus archive of customer data.
+        </p>
+        <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+          I was brought on to oversee the operational handover of the entire franchise portfolio in the lead-up to a full business sale — hybrid and hands-on: consultant, mediator, and implementation lead across staff, store and stakeholder levels.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STAKEHOLDER MAP ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Stakeholder Map</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        One person, eight relationships to hold steady at once.
+      </p>
+    </div>
+
+    <div class="reveal flex justify-center" style="transition-delay:.1s">
+      <svg viewBox="-120 -80 840 760" class="radial-diagram w-full max-w-xl h-auto text-ink dark:text-bone" role="img" aria-label="Stakeholder map with Jessica at the centre, connected to Legal Office and Visa, Delivery Vendors, C-Suite Owners, Banking Institute, Oracle Training Team, Lawyers and Auditors, Purchasers KOJ, and Store Staff 70 plus">
+        <circle cx="300" cy="300" r="230" class="radial-ring" />
+        <circle cx="300" cy="300" r="150" class="radial-ring radial-ring-inner" />
+
+        <line x1="300" y1="300" x2="300" y2="70" class="radial-spoke" />
+        <line x1="300" y1="300" x2="462.6" y2="137.4" class="radial-spoke" />
+        <line x1="300" y1="300" x2="530" y2="300" class="radial-spoke" />
+        <line x1="300" y1="300" x2="462.6" y2="462.6" class="radial-spoke" />
+        <line x1="300" y1="300" x2="300" y2="530" class="radial-spoke" />
+        <line x1="300" y1="300" x2="137.4" y2="462.6" class="radial-spoke" />
+        <line x1="300" y1="300" x2="70" y2="300" class="radial-spoke" />
+        <line x1="300" y1="300" x2="137.4" y2="137.4" class="radial-spoke" />
+
+        <circle cx="300" cy="300" r="66" class="radial-center" />
+        <text x="300" y="305" text-anchor="middle" class="radial-center-text">Jessica</text>
+
+        <circle cx="300" cy="70" r="7" class="radial-node" />
+        <text x="300" y="42" text-anchor="middle" class="radial-label">Legal Office &amp; Visa</text>
+
+        <circle cx="462.6" cy="137.4" r="7" class="radial-node" />
+        <text x="462.6" y="100" text-anchor="middle" class="radial-label">Delivery Vendors</text>
+
+        <circle cx="530" cy="300" r="7" class="radial-node" />
+        <text x="530" y="272" text-anchor="middle" class="radial-label">C-Suite Owners</text>
+
+        <circle cx="462.6" cy="462.6" r="7" class="radial-node" />
+        <text x="462.6" y="500" text-anchor="middle" class="radial-label">Banking Institute</text>
+
+        <circle cx="300" cy="530" r="7" class="radial-node" />
+        <text x="300" y="562" text-anchor="middle" class="radial-label">Oracle Training Team</text>
+
+        <circle cx="137.4" cy="462.6" r="7" class="radial-node" />
+        <text x="137.4" y="500" text-anchor="middle" class="radial-label">Lawyers &amp; Auditors</text>
+
+        <circle cx="70" cy="300" r="7" class="radial-node" />
+        <text x="70" y="272" text-anchor="middle" class="radial-label">Purchasers (KOJ)</text>
+
+        <circle cx="137.4" cy="137.4" r="7" class="radial-node" />
+        <text x="137.4" y="100" text-anchor="middle" class="radial-label">Store Staff 70+</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I DID ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">What I Did</p>
+      </div>
+
+      <div class="max-w-3xl">
+        <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+          <li class="reveal flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Mapped equipment, leases and asset valuation across all three outlets</li>
+          <li class="reveal flex gap-4" style="transition-delay:.04s"><span class="text-ink/30 dark:text-bone/30">—</span>Built detailed profit and loss breakdowns</li>
+          <li class="reveal flex gap-4" style="transition-delay:.08s"><span class="text-ink/30 dark:text-bone/30">—</span>Prepared final pricing feasibility for the buyer consortium</li>
+          <li class="reveal flex gap-4" style="transition-delay:.12s"><span class="text-ink/30 dark:text-bone/30">—</span>Handled sensitive documentation — visas, passports, serial numbers, bank accounts</li>
+          <li class="reveal flex gap-4" style="transition-delay:.16s"><span class="text-ink/30 dark:text-bone/30">—</span>Aligned both parties on sale terms and ensured a seamless transfer of control</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ORACLE POS ROLLOUT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Oracle POS Training Rollout — 3 Weeks</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Retraining 70+ employees on a new POS system, store by store, without stopping service.
+      </p>
+    </div>
+
+    <div class="reveal vertical-steps" style="transition-delay:.1s">
+      <div class="vertical-step">
+        <span class="vertical-step-index">01</span>
+        <p class="vertical-step-title">System Overview Briefing</p>
+      </div>
+      <div class="vertical-step">
+        <span class="vertical-step-index">02</span>
+        <p class="vertical-step-title">Store-by-Store POS Setup</p>
+      </div>
+      <div class="vertical-step">
+        <span class="vertical-step-index">03</span>
+        <p class="vertical-step-title">Hands-On Training Session</p>
+      </div>
+      <div class="vertical-step">
+        <span class="vertical-step-index">04</span>
+        <p class="vertical-step-title">Live Environment Testing</p>
+      </div>
+      <div class="vertical-step">
+        <span class="vertical-step-index">05</span>
+        <p class="vertical-step-title">Final Knowledge Check</p>
+      </div>
+      <div class="vertical-step">
+        <span class="vertical-step-index">06</span>
+        <p class="vertical-step-title">Go Live — Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRANSITION TIMELINE ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Transition Timeline</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        From first conversation to full handover in seven months.
+      </p>
+    </div>
+
+    <div class="reveal overflow-x-auto" style="transition-delay:.1s">
+      <div class="timeline" style="grid-template-columns: repeat(7, minmax(140px, 1fr)); min-width: 900px;">
+        <div class="timeline-track"></div>
+        <div class="timeline-point">
+          <span class="timeline-year">Dec 2022</span>
+          <p class="timeline-label">Initial Sale Discussion</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">Jan – Mar 2023</span>
+          <p class="timeline-label">Feasibility &amp; Pricing Negotiation</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">Feb – Mar 2023</span>
+          <p class="timeline-label">Audits &amp; P/L</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">Mar 2023</span>
+          <p class="timeline-label">Final Offer &amp; Agreement</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">Apr 2023</span>
+          <p class="timeline-label">Visa &amp; Bank Transfer</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">May 2023</span>
+          <p class="timeline-label">Oracle Training Rollout</p>
+        </div>
+        <div class="timeline-point">
+          <span class="timeline-year">June 2023</span>
+          <p class="timeline-label">Full Handover</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OUTCOME ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Outcome</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6">
+        70+ staff retrained on a new Oracle POS system in three weeks
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.04s">
+        Full pricing feasibility delivered to the buyer consortium
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.08s">
+        Sensitive ownership documentation handled end-to-end
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.12s">
+        Seamless transfer of operational control across all three outlets
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ NEXT PROJECT (loops back to 01) ============ -->
+  <footer class="relative border-t border-ink/10 dark:border-bone/10">
+    <a href="01-regulatory-change-programme.html" class="next-project group block px-6 md:px-10 py-20 md:py-32 max-w-[1600px] mx-auto" style="--next-from:#101820; --next-to:#3E5C76;">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-6">Back to the start — 01 / 08</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2 class="font-serif leading-[1.02]">
+          <span class="block text-[10vw] md:text-[5.5vw] group-hover:italic transition-[font-style]">Environmental &amp; Regulatory Services</span>
+        </h2>
+        <span class="inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit shrink-0 transition-colors group-hover:text-[var(--accent)] group-hover:border-[var(--accent)]">
+          All work
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="px-6 md:px-10 pb-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-ink/10 dark:border-bone/10 pt-8">
+      <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-sans text-xs uppercase tracking-widest hover:text-[var(--accent)] transition-colors">LinkedIn ↗</a>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/30 dark:text-bone/30"></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>

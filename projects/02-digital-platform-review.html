@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Platform Review — Jessica Issa</title>
+<meta name="description" content="Reframing a stalled two-year council digital platform programme, then proposing a platform-led consolidation of a fragmented digital estate into two core sites — now approved and in build as a five-pathway resident platform." />
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink" style="--proj-from:#0F1B2D; --proj-to:#1F6F78;">
+
+<div id="cursor-preview" class="hidden md:flex fixed top-0 left-0 z-50 w-40 h-52 rounded-sm pointer-events-none opacity-0 items-end p-4 overflow-hidden">
+  <p id="cursor-preview-label" class="font-sans text-xs uppercase tracking-widest text-white/90"></p>
+</div>
+
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="../index.html" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="../index.html#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="../index.html#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="../index.html#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="../index.html#work" class="mobile-link">Work</a>
+    <a href="../index.html#about" class="mobile-link">About</a>
+    <a href="../index.html#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ CASE HERO ============ -->
+  <section class="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-10 pt-32 pb-14 max-w-[1600px] mx-auto">
+
+    <div class="reveal absolute top-28 right-6 md:right-10 font-serif text-[13vw] md:text-[9vw] leading-none text-ink/[0.06] dark:text-bone/[0.06] select-none pointer-events-none">
+      02
+    </div>
+
+    <div class="reveal flex items-center gap-3 mb-8">
+      <span class="w-2.5 h-2.5 rounded-full case-swatch"></span>
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50">Project 02 / 08 — Digital Governance</p>
+    </div>
+
+    <h1 class="reveal font-serif leading-[1.02] tracking-tightest2 max-w-5xl" style="transition-delay:.06s">
+      <span class="block text-[9vw] md:text-[5vw]">Digital Platform</span>
+      <span class="block text-[9vw] md:text-[5vw] italic">Review</span>
+    </h1>
+
+    <div class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.14s">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Client</p>
+        <p class="font-sans text-sm">North East Lincolnshire Council</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Role</p>
+        <p class="font-sans text-sm">Digital Governance &amp; Platform Strategy</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Sector</p>
+        <p class="font-sans text-sm">Public Sector Digital Platform</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Year</p>
+        <p class="font-sans text-sm">2025 — Present</p>
+      </div>
+    </div>
+
+    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.22s">
+      Scroll ↓
+    </div>
+  </section>
+
+  <!-- ============ CONTEXT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Context</p>
+      </div>
+      <div class="max-w-3xl">
+        <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3]">
+          A council-wide digital platform programme had been running for two years following a technical failure that generated 140+ complaints within 24 hours.
+        </p>
+        <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+          The ambition was to evolve the council website into a resilient, cloud-hosted digital platform aligned to strategic priorities. Despite multiple technical improvements, delivery had stalled and lacked direction.
+        </p>
+        <p class="reveal mt-6 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.12s">
+          I was brought in to get the programme back on track and build a priority matrix so the working group could move again. But the deeper problem sat underneath the roadmap: the council wasn't operating one digital presence, it was operating a dozen — all competing for the same residents, none of them winning.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal flex flex-wrap items-end gap-x-16 gap-y-8 mt-14 max-w-2xl border-t border-ink/10 dark:border-bone/10 pt-10" style="transition-delay:.16s">
+      <div>
+        <p class="font-serif text-5xl md:text-6xl leading-none">2M</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year — main statutory site</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl md:text-6xl leading-none">263k</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year — microsites, combined</p>
+      </div>
+    </div>
+
+    <p class="reveal mt-8 font-sans text-base text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.2s">
+      No cross-tracking, no shared SEO signal, no shared front door, no shared update cadence — so residents explore whatever they land on, and no single platform builds momentum.
+    </p>
+  </section>
+
+  <!-- ============ CORE ISSUES ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Core Issues Identified</p>
+      </div>
+      <div class="max-w-3xl divide-y divide-ink/10 dark:divide-bone/10">
+        <div class="reveal issue-row flex items-baseline gap-6 py-6">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">01</span>
+          <p class="font-serif text-xl md:text-2xl">Interim governance with unclear decision authority</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.05s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">02</span>
+          <p class="font-serif text-xl md:text-2xl">Homepage redesign stuck in a prolonged "revamp" state</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.1s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">03</span>
+          <p class="font-serif text-xl md:text-2xl">6,000+ pieces of content with complex duplication</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.15s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">04</span>
+          <p class="font-serif text-xl md:text-2xl">No prioritisation of user-facing content</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.2s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">05</span>
+          <p class="font-serif text-xl md:text-2xl">Web team operating in reactive, high-stress mode</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.25s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">06</span>
+          <p class="font-serif text-xl md:text-2xl">Workstreams defined but not sequenced or dependency-mapped</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE FRAGMENTED ESTATE ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">The Fragmented Estate</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        A statutory site and a scatter of microsites, all publishing independently — with nothing telling any of them what the others were doing.
+      </p>
+    </div>
+
+    <div class="reveal flow-map" style="transition-delay:.1s">
+      <div class="flow-tier flow-tier-nodes">
+        <span>Statutory Site · 2M views/yr</span>
+        <span>Microsites · 263k views/yr combined</span>
+      </div>
+
+      <div class="flow-connector" aria-hidden="true"></div>
+
+      <div class="flow-tier flow-tier-hub">
+        <span>No Shared Signal</span>
+      </div>
+
+      <div class="flow-connector" aria-hidden="true"></div>
+
+      <div class="flow-tier flow-tier-output">
+        <span>No cross-tracking</span>
+        <span>No shared SEO signal</span>
+        <span>No shared front door</span>
+        <span>No update cadence</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I DID ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">What I Did</p>
+      </div>
+
+      <div class="max-w-3xl space-y-16">
+        <div class="reveal">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Reframed the programme into actionable structure</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Mapped cross-workstream dependencies</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Designed a 3×3 impact matrix and prioritisation criteria</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Created estimated effort modelling to guide sequencing</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Facilitated workshops across IT, Web, Comms, Research &amp; Transformation</li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:.06s">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Redesigned content governance workflow</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Introduced a Salesforce submission form with strict criteria</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Automated routing based on functional vs. promotional need</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Reduced individual gatekeeping pressure</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Embedded structured decision-making into the process</li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:.12s">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Structured six workstreams into phased delivery</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Website rationalisation</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>CRM integration &amp; unified digital platform</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Resident mobile app</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Marketing Cloud integration</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Social media hub</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Content excellence initiative</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT / EFFORT QUADRANT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Prioritisation — Phase One</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Six workstreams, plotted against resident impact and delivery effort — the sequencing argument made visible, and the case that first got the group moving again.
+      </p>
+    </div>
+
+    <div class="reveal flex justify-center" style="transition-delay:.1s">
+      <svg viewBox="-40 -30 700 620" class="quadrant-diagram w-full max-w-2xl h-auto text-ink dark:text-bone" role="img" aria-label="Impact versus effort quadrant chart plotting six workstreams: Content Excellence and Website Rationalisation at medium effort and high impact, CRM Integration at high effort and high impact, Marketing Cloud at medium effort and medium impact, Resident App at low effort and medium impact, and Social Media Hub at low effort and high impact">
+
+        <line x1="60" y1="40" x2="60" y2="480" class="quadrant-axis" />
+        <line x1="60" y1="480" x2="600" y2="480" class="quadrant-axis" />
+
+        <text x="30" y="60" text-anchor="middle" class="quadrant-tick">High</text>
+        <text x="30" y="264" text-anchor="middle" class="quadrant-tick">Med</text>
+        <text x="30" y="468" text-anchor="middle" class="quadrant-tick">Low</text>
+        <text x="15" y="260" text-anchor="middle" class="quadrant-axis-label" transform="rotate(-90 15 260)">Impact</text>
+
+        <text x="150" y="512" text-anchor="middle" class="quadrant-tick">Low</text>
+        <text x="330" y="512" text-anchor="middle" class="quadrant-tick">Med</text>
+        <text x="510" y="512" text-anchor="middle" class="quadrant-tick">High</text>
+        <text x="330" y="546" text-anchor="middle" class="quadrant-axis-label">Effort</text>
+
+        <line x1="60" y1="264" x2="600" y2="264" class="quadrant-grid" />
+        <line x1="330" y1="40" x2="330" y2="480" class="quadrant-grid" />
+
+        <circle cx="300" cy="60" r="7" class="quadrant-node" />
+        <text x="300" y="34" text-anchor="middle" class="quadrant-label">Content Excellence</text>
+
+        <circle cx="360" cy="60" r="7" class="quadrant-node" />
+        <text x="360" y="-2" text-anchor="middle" class="quadrant-label">Website Rationalisation</text>
+
+        <circle cx="510" cy="60" r="7" class="quadrant-node quadrant-node-high" />
+        <text x="510" y="34" text-anchor="middle" class="quadrant-label">CRM Integration</text>
+
+        <circle cx="330" cy="264" r="7" class="quadrant-node" />
+        <text x="330" y="290" text-anchor="middle" class="quadrant-label">Marketing Cloud</text>
+
+        <circle cx="150" cy="264" r="7" class="quadrant-node" />
+        <text x="150" y="290" text-anchor="middle" class="quadrant-label">Resident App</text>
+
+        <circle cx="150" cy="60" r="7" class="quadrant-node" />
+        <text x="150" y="34" text-anchor="middle" class="quadrant-label">Social Media Hub</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ ESTIMATED EFFORT TABLE ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Estimated Effort Model — Phase One</p>
+    </div>
+
+    <div class="reveal overflow-x-auto" style="transition-delay:.06s">
+      <table class="effort-table w-full text-left">
+        <thead>
+          <tr>
+            <th>Workstream</th>
+            <th>Effort</th>
+            <th>Impact</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content Excellence</td>
+            <td><span class="tag tag-med">Med</span></td>
+            <td><span class="tag tag-high">High</span></td>
+            <td>2 – 3 months</td>
+          </tr>
+          <tr>
+            <td>Website Rationalisation</td>
+            <td><span class="tag tag-med">Med</span></td>
+            <td><span class="tag tag-high">High</span></td>
+            <td>4 – 5 sites</td>
+          </tr>
+          <tr>
+            <td>CRM Integration</td>
+            <td><span class="tag tag-high">High</span></td>
+            <td><span class="tag tag-high">High</span></td>
+            <td>12 – 18 months</td>
+          </tr>
+          <tr>
+            <td>Marketing Cloud</td>
+            <td><span class="tag tag-med">Med</span></td>
+            <td><span class="tag tag-med">Med</span></td>
+            <td>24 months (long-term)</td>
+          </tr>
+          <tr>
+            <td>Resident App</td>
+            <td><span class="tag tag-low">Low</span></td>
+            <td><span class="tag tag-med">Med</span></td>
+            <td>6 – 12 months</td>
+          </tr>
+          <tr>
+            <td>Social Media Hub</td>
+            <td><span class="tag tag-low">Low</span></td>
+            <td><span class="tag tag-high">High</span></td>
+            <td>6 – 12 months</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ THE BIGGER PROPOSAL ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Beyond The Roadmap</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Six sequenced workstreams would have got the programme moving. They would not have fixed the fragmentation underneath it.
+      </p>
+      <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+        Even executed perfectly, a six-workstream fix would still have left the council running a scattered digital estate — a statutory site and a handful of microsites, each fighting for the same residents with no visibility across any of it. So instead of revamping each site individually and retiring the rest, I proposed something bigger: fold everything into a single, platform-led, user-centric model, with the full resident journey visible in one place for the first time. A small number of other councils have taken the same approach and seen outsized returns on both the social and economic side — evidence that shaped how the proposal was framed.
+      </p>
+      <p class="reveal mt-6 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.12s">
+        The proposal was approved. It's now in build.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ TWO SITES, FIVE PATHWAYS ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">The New Architecture</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Down to two core sites: the statutory site standing alone, and a single resident-facing platform — working name "the Hub" — for everything else.
+      </p>
+      <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+        A full URL audit ran across every legacy platform first, so consolidation doesn't mean erasure — each site keeps its own identity and content ownership, now sitting inside a shared, future-proofed structure instead of an orphaned domain. Inside the Hub, everything is organised around five clear pathways:
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10">
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8">
+        <p class="cluster-title">Visit</p>
+        <p class="cluster-orgs">Everything for people exploring, visiting or spending time in the area.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.03s">
+        <p class="cluster-title">Work &amp; Invest</p>
+        <p class="cluster-orgs">Business, employment and investment routes, brought together instead of split across separate microsites.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.06s">
+        <p class="cluster-title">Create</p>
+        <p class="cluster-orgs">Culture, arts and the creative economy — its own pathway rather than a buried subsection.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.09s">
+        <p class="cluster-title">Live</p>
+        <p class="cluster-orgs">Resident services and community life — the day-to-day reasons most people are actually here.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.12s">
+        <p class="cluster-title">Get Online</p>
+        <p class="cluster-orgs">The digital inclusion and skills connector — the direct link back into the Digital Inclusion Programme.</p>
+      </div>
+    </div>
+
+    <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10 mt-14" style="transition-delay:.16s">
+      <div class="stat-tile">
+        <p class="stat-tile-number">✓</p>
+        <p class="stat-tile-label">URL audit complete</p>
+        <p class="stat-tile-note">Every legacy platform mapped before a single page moved.</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-number">✓</p>
+        <p class="stat-tile-label">Booking &amp; payment built in</p>
+        <p class="stat-tile-note">Capability the fragmented estate never had in one place.</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-number">✓</p>
+        <p class="stat-tile-label">Cross-service working group live</p>
+        <p class="stat-tile-note">Each service area now owns and creates its own Hub content.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILT TO BE MEASURED ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Built To Be Measured</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Everything the fragmented estate couldn't see becomes trackable inside the Hub — full journey tracking, evidence-based content decisions, booking and conversion data, comms effectiveness, and a working evidence base for investment decisions.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10">
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8">
+        <p class="cluster-title">Operational</p>
+        <p class="cluster-orgs">Microsites decommissioned · domain count reduced · duplicated content eliminated</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.03s">
+        <p class="cluster-title">Engagement</p>
+        <p class="cluster-orgs">Total Hub sessions · cross-platform navigation rate · returning visitor rate</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.06s">
+        <p class="cluster-title">Social Value</p>
+        <p class="cluster-orgs">Reach into low-engagement wards · Get Online pathway referrals · community feedback</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.09s">
+        <p class="cluster-title">Economic</p>
+        <p class="cluster-orgs">Bookings vs. baseline · investment enquiries from the Hub · campaign conversion rate</p>
+      </div>
+    </div>
+
+    <p class="reveal mt-14 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.12s">
+      Targets are set at pilot launch, reviewed at the end of Phase 1, and adjusted before Phase 2 — deliberately flexible rather than fixed two years out.
+    </p>
+  </section>
+
+  <!-- ============ PHASING ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Phasing — Three Quarters, Flexible Throughout</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        A pilot migration, then measurement, then full transition — adjusted along the way rather than fixed in advance.
+      </p>
+    </div>
+
+    <div class="reveal timeline" style="transition-delay:.1s">
+      <div class="timeline-track" aria-hidden="true"></div>
+      <div class="timeline-point">
+        <span class="timeline-year">Q1</span>
+        <p class="timeline-label">Pilot — a first cohort of sites migrates into the Hub</p>
+      </div>
+      <div class="timeline-point">
+        <span class="timeline-year">Q2</span>
+        <p class="timeline-label">Measure — pilot results reviewed against baseline</p>
+      </div>
+      <div class="timeline-point">
+        <span class="timeline-year">Q3</span>
+        <p class="timeline-label">Full transition — remaining sites migrate under the five pathways</p>
+      </div>
+      <div class="timeline-point">
+        <span class="timeline-year">Ongoing</span>
+        <p class="timeline-label">Flexible cadence — targets revisited at each phase boundary</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Impact <span class="text-ink/40 dark:text-bone/40 normal-case tracking-normal">/ Pilot in progress</span></p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6">
+        Landing page live; three microsite front ends already migrated onto the new architecture
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.04s">
+        Full resident journey tracking now technically possible for the first time across the estate
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.08s">
+        Working group established so service areas own their own Hub content
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.12s">
+        Reduced reactive content publishing behaviour, carried over from Phase One's governance workflow
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6 md:col-span-2" style="transition-delay:.16s">
+        Evidence base beginning to build for future investment and campaign decisions
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ NEXT PROJECT ============ -->
+  <footer class="relative border-t border-ink/10 dark:border-bone/10">
+    <a href="03-digital-inclusion-programme.html" class="next-project group block px-6 md:px-10 py-20 md:py-32 max-w-[1600px] mx-auto" style="--next-from:#1A1423; --next-to:#7B2D8E;">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-6">Next — 03 / 08</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2 class="font-serif leading-[1.02]">
+          <span class="block text-[10vw] md:text-[5.5vw] group-hover:italic transition-[font-style]">Digital Inclusion Programme</span>
+        </h2>
+        <span class="inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit shrink-0 transition-colors group-hover:text-[var(--accent)] group-hover:border-[var(--accent)]">
+          All work
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="px-6 md:px-10 pb-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-ink/10 dark:border-bone/10 pt-8">
+      <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-sans text-xs uppercase tracking-widest hover:text-[var(--accent)] transition-colors">LinkedIn ↗</a>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/30 dark:text-bone/30"></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>

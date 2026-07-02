@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jessica Issa — Service &amp; Systems Designer</title>
+<meta name="description" content="Jessica Issa is a Service and Systems Designer working across complex public sector environments, aligning policy, operations and digital infrastructure to deliver resilient, scalable outcomes." />
+
+<!-- Fonts -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<!-- Tailwind (CDN / Play) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink">
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader" class="fixed inset-0 z-[100] bg-void flex flex-col items-center justify-center overflow-hidden">
+  <div class="preloader-glow absolute inset-0" aria-hidden="true"></div>
+  <div class="font-serif italic text-bone/60 text-sm tracking-widest uppercase mb-6 relative">Jessica Issa</div>
+  <div id="preloader-count" class="font-serif text-bone text-6xl md:text-8xl tabular-nums relative">0%</div>
+</div>
+
+<!-- ============ CURSOR PREVIEW (desktop only) ============ -->
+<div id="cursor-preview" class="glass hidden md:flex fixed top-0 left-0 z-50 w-28 h-32 rounded-2xl pointer-events-none opacity-0 flex-col items-center justify-center text-center gap-2 px-3 overflow-hidden">
+  <svg id="cursor-preview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-ink dark:text-bone mx-auto"></svg>
+  <p id="cursor-preview-label" class="w-full text-center font-sans text-[10px] uppercase tracking-widest text-ink/80 dark:text-bone/80 leading-tight"></p>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="#top" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="#work" class="mobile-link">Work</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero-viewport relative min-h-[100vh] flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 max-w-[1600px] mx-auto">
+    <div class="reveal">
+      <p class="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50 mb-8">
+        Service Design — Secure Systems — Systems-Led Storytelling
+      </p>
+    </div>
+
+    <h1 class="font-serif leading-[1.05] tracking-tightest2">
+      <span class="reveal block overflow-hidden pt-[0.5em] -mt-[0.5em] pb-[0.5em] -mb-[0.5em]"><span class="block text-[13vw] md:text-[8.5vw]">Systems that</span></span>
+      <span class="reveal block overflow-hidden pt-[0.5em] -mt-[0.5em] pb-[0.5em] -mb-[0.5em]" style="transition-delay:.08s"><span class="block text-[13vw] md:text-[8.5vw] italic text-transparent bg-clip-text bg-gradient-to-r from-ink dark:from-bone to-ink/40 dark:to-bone/30">hold under</span></span>
+      <span class="reveal block overflow-hidden pt-[0.5em] -mt-[0.5em] pb-[0.5em] -mb-[0.5em]" style="transition-delay:.16s"><span class="block text-[13vw] md:text-[8.5vw]">pressure.</span></span>
+    </h1>
+
+    <div class="reveal mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end" style="transition-delay:.28s">
+      <p class="font-sans text-base md:text-lg max-w-xl text-ink/70 dark:text-bone/70 leading-relaxed">
+        I'm Jessica, a Service and Systems Designer working across complex public sector environments — aligning policy, operations and digital infrastructure to deliver resilient, scalable outcomes.
+      </p>
+      <a href="#work" class="group inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors">
+        View selected work
+        <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+
+    <div class="reveal mt-10 md:mt-0 md:absolute md:bottom-10 md:left-10 md:right-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-6 text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.4s">
+      <span>Currently — North East Lincolnshire Council</span>
+      <span class="hidden md:inline">Scroll ↓</span>
+      <span>Open to select projects</span>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="relative px-6 md:px-10 py-28 md:py-40 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+
+      <div class="reveal">
+        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10">01</span>
+        <p class="mt-4 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">About / Index</p>
+      </div>
+
+      <div class="max-w-3xl">
+        <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3] md:leading-[1.25]">
+          I design and stabilise large-scale service systems — aligning policy, operations and digital infrastructure to deliver resilient, scalable outcomes.
+        </p>
+
+        <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.1s">
+          My work spans regulatory transformation, digital platform governance and inclusion strategy, embedding structured delivery models, prioritisation frameworks and evidence-led decision making. I operate at the intersection of organisational design, service architecture, business design and digital infrastructure.
+        </p>
+
+        <p class="reveal mt-6 font-serif italic text-lg md:text-xl text-ink/60 dark:text-bone/60" style="transition-delay:.16s">
+          Always open to projects and ideas.
+        </p>
+
+        <!-- Education -->
+        <div class="reveal mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-ink/10 dark:border-bone/10 pt-10" style="transition-delay:.2s">
+          <div>
+            <p class="text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-3">Education</p>
+            <p class="font-serif text-base md:text-lg">Bachelor of Arts (Hons)</p>
+            <p class="font-sans text-sm text-ink/60 dark:text-bone/60 mt-1">Business Design — Istituto Europeo di Design, Barcelona</p>
+            <p class="font-sans text-sm text-ink/40 dark:text-bone/40 mt-1">First Class Honours — 2022</p>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-3">&nbsp;</p>
+            <p class="font-serif text-base md:text-lg">Bachelor of Arts, Honours</p>
+            <p class="font-sans text-sm text-ink/60 dark:text-bone/60 mt-1">University of British Columbia, Vancouver</p>
+            <p class="font-sans text-sm text-ink/40 dark:text-bone/40 mt-1">2018</p>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="reveal group mt-10 inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors" style="transition-delay:.26s">
+          Connect on LinkedIn
+          <span class="inline-block transition-transform group-hover:translate-x-1">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section id="work" class="relative px-6 md:px-10 py-28 md:py-40 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal flex items-end justify-between mb-14 md:mb-20">
+      <div>
+        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10">02</span>
+        <p class="mt-4 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Selected Work</p>
+      </div>
+      <p class="hidden md:block font-sans text-sm text-ink/40 dark:text-bone/40 max-w-xs text-right">
+        Eight engagements — three in central &amp; local government, five in commercial brand and platform design.
+      </p>
+    </div>
+
+    <div id="work-list" class="border-t border-ink/10 dark:border-bone/10">
+
+      <div class="reveal pt-8 pb-2 md:pt-10">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40">Public Sector — Central &amp; Local Government</p>
+      </div>
+
+      <a href="projects/01-regulatory-change-programme.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#101820" data-to="#3E5C76" data-icon="01" data-label="Regulatory Systems">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">01</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Environmental &amp; Regulatory Services Change Programme</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Organisation &amp; Service Design</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2025—Present</span>
+      </a>
+
+      <a href="projects/02-digital-platform-review.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#0F1B2D" data-to="#1F6F78" data-icon="02" data-label="Digital Governance">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">02</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Digital Platform Review</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Digital Governance &amp; Platform Strategy</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2025—Present</span>
+      </a>
+
+      <a href="projects/03-digital-inclusion-programme.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#1A1423" data-to="#7B2D8E" data-icon="03" data-label="Digital Inclusion">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">03</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Digital Inclusion Programme</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Social Policy &amp; Research</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2025—Present</span>
+      </a>
+
+      <div class="reveal pt-10 pb-2 md:pt-14">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40">Commercial &amp; Brand — Selected Private Sector Work</p>
+      </div>
+
+      <a href="projects/04-neuv-brand-ux-system.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#00203D" data-to="#0A64C2" data-icon="04" data-label="Neuv — FinTech">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">04</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Neuv — Brand &amp; UX System</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">FinTech Concept</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2025</span>
+      </a>
+
+      <a href="projects/05-mango-experiential-retail.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#3B1F1A" data-to="#FF7A45" data-icon="05" data-label="Mango">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">05</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Mango — Experiential Retail</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Strategic &amp; Brand Design</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2022</span>
+      </a>
+
+      <a href="projects/06-seat-anima-design.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#0B1E3D" data-to="#4FA8FF" data-icon="06" data-label="SEAT × Anima">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">06</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">SEAT × Anima Design</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Mobility UX Strategy</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2021</span>
+      </a>
+
+      <a href="projects/07-gtb-brand-digital-build.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#1A0705" data-to="#D83023" data-icon="07" data-label="GTB">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">07</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">GTB — Brand &amp; Digital Build</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">F&amp;B, End-to-End</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2018—24</span>
+      </a>
+
+      <a href="projects/08-moora-foods-transition.html" class="project-row reveal group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-8 md:py-10 border-b border-ink/10 dark:border-bone/10" data-from="#0C1B12" data-to="#2E8B57" data-icon="08" data-label="Moora Foods">
+        <span class="font-sans text-xs text-ink/40 dark:text-bone/40 w-10 transition-colors group-hover:text-[var(--accent)]">08</span>
+        <h3 class="font-serif text-3xl md:text-5xl flex-1 group-hover:italic transition-[font-style]">Moora Foods — Franchise Transition</h3>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 md:w-56">Operations &amp; M&amp;A Readiness</span>
+        <span class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 md:w-32 md:text-right">2023</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITIES / SKILLS MARQUEE ============ -->
+  <section class="relative py-20 md:py-28 border-t border-ink/10 dark:border-bone/10 overflow-hidden">
+    <p class="reveal px-6 md:px-10 max-w-[1600px] mx-auto font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-10">03 / Capabilities</p>
+    <div class="marquee-wrap">
+      <div id="marquee-track" class="marquee-track font-serif text-3xl md:text-6xl whitespace-nowrap">
+        <span>Service Blueprint</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>Systems Mapping</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>Operating Model Design</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span class="italic">Agile Delivery</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>Digital Transformation Strategy</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>WCAG Implementation</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span class="italic">Design Systems</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>User Research &amp; Testing</span>
+        <span class="text-ink/20 dark:text-bone/20">—</span>
+        <span>Stakeholder Communication</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / FOOTER ============ -->
+  <footer id="contact" class="relative px-6 md:px-10 pt-20 pb-14 md:pt-28 md:pb-16 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-8">04 / Contact</p>
+
+    <h2 class="font-serif leading-[0.95] mt-8 md:mt-12">
+      <span class="block text-[11vw] md:text-[6.5vw]">Let's build something</span>
+      <span class="block text-[11vw] md:text-[6.5vw] italic">that survives.</span>
+    </h2>
+
+    <div class="mt-14 md:mt-20 flex flex-col md:flex-row md:items-end justify-between gap-6 border-t border-ink/10 dark:border-bone/10 pt-10">
+      <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-serif text-2xl md:text-3xl hover:text-[var(--accent)] transition-colors">
+        LinkedIn ↗
+      </a>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40"></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

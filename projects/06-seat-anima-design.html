@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEAT × Anima Design — Jessica Issa</title>
+<meta name="description" content="Reframing SEAT's mobility app for Gen Z — from a transport tool into a community-driven experience platform, with a full information architecture and content strategy." />
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink" style="--proj-from:#0B1E3D; --proj-to:#4FA8FF;">
+
+<div id="cursor-preview" class="hidden md:flex fixed top-0 left-0 z-50 w-40 h-52 rounded-sm pointer-events-none opacity-0 items-end p-4 overflow-hidden">
+  <p id="cursor-preview-label" class="font-sans text-xs uppercase tracking-widest text-white/90"></p>
+</div>
+
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="../index.html" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="../index.html#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="../index.html#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="../index.html#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="../index.html#work" class="mobile-link">Work</a>
+    <a href="../index.html#about" class="mobile-link">About</a>
+    <a href="../index.html#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ CASE HERO ============ -->
+  <section class="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-10 pt-32 pb-14 max-w-[1600px] mx-auto">
+
+    <div class="reveal absolute top-28 right-6 md:right-10 font-serif text-[13vw] md:text-[9vw] leading-none text-ink/[0.06] dark:text-bone/[0.06] select-none pointer-events-none">
+      06
+    </div>
+
+    <div class="reveal flex items-center gap-3 mb-8">
+      <span class="w-2.5 h-2.5 rounded-full case-swatch"></span>
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50">Project 06 / 08 — Mobility UX</p>
+    </div>
+
+    <h1 class="reveal font-serif leading-[1.02] tracking-tightest2 max-w-5xl" style="transition-delay:.06s">
+      <span class="block text-[9vw] md:text-[5vw]">SEAT ×</span>
+      <span class="block text-[9vw] md:text-[5vw] italic">Anima Design</span>
+    </h1>
+
+    <div class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.14s">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Client</p>
+        <p class="font-sans text-sm">SEAT Innovation &amp; Anima Design</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Role</p>
+        <p class="font-sans text-sm">UX Strategist &amp; UI Designer</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Sector</p>
+        <p class="font-sans text-sm">Automotive / Gen Z Digital</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Year</p>
+        <p class="font-sans text-sm">2021</p>
+      </div>
+    </div>
+
+    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.22s">
+      Scroll ↓
+    </div>
+  </section>
+
+  <!-- ============ CONTEXT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Context</p>
+      </div>
+      <div class="max-w-3xl">
+        <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3]">
+          SEAT partnered with Anima Design to explore the future of digital mobility — and asked me to reframe the product for Gen Z.
+        </p>
+        <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+          A generation increasingly disengaged by outdated app mechanics and broad, undefined demographic targeting. My first step was a full critique of the existing product and its audience alignment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUE PROPOSITION ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <p class="reveal font-serif italic text-3xl md:text-5xl leading-[1.25] max-w-4xl">
+      "Experiences empowered by community is the new mindset of mobility."
+    </p>
+    <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 max-w-2xl" style="transition-delay:.06s">
+      This reframed the app not around transport, but around spontaneous, shared experiences — positioning SEAT as a lifestyle connector, not just a car company.
+    </p>
+  </section>
+
+  <!-- ============ APP SCREENS ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">SE-APP, In Screen</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Discover, create, and hold the ticket — three moments from the flow.
+      </p>
+    </div>
+    <div class="reveal flex flex-wrap justify-center gap-6" style="transition-delay:.08s">
+      <img src="../assets/seat-screen-discover.jpg" alt="SE-APP discover screen inviting users to search the best events in Barcelona." loading="lazy" width="292" height="673" class="w-full max-w-[150px] rounded-xl shadow-[0_20px_40px_-20px_rgba(0,0,0,0.4)]">
+      <img src="../assets/seat-screen-create-event.jpg" alt="SE-APP create an event form with location, date and description fields." loading="lazy" width="294" height="673" class="w-full max-w-[150px] rounded-xl shadow-[0_20px_40px_-20px_rgba(0,0,0,0.4)]">
+      <img src="../assets/seat-screen-tickets.jpg" alt="SE-APP ticket screen with a QR code and a book-your-ride prompt." loading="lazy" width="292" height="673" class="w-full max-w-[150px] rounded-xl shadow-[0_20px_40px_-20px_rgba(0,0,0,0.4)]">
+    </div>
+  </section>
+
+  <!-- ============ SITEMAP ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Information Architecture</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        A Big IA and Small IA, mapped so every screen earns Gen Z's attention rather than assuming it.
+      </p>
+    </div>
+
+    <div class="reveal flow-map" style="transition-delay:.1s">
+      <div class="flow-tier flow-tier-nodes">
+        <span>Landing / Welcome</span>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-tier flow-tier-nodes">
+        <span>Onboarding — Archetype Quiz</span>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-tier flow-tier-hub">
+        <span>Home</span>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-tier flow-tier-nodes">
+        <span>Search</span>
+        <span>Event Details</span>
+        <span>Create Event</span>
+        <span>Messages</span>
+        <span>Profile</span>
+      </div>
+      <div class="flow-connector" aria-hidden="true"></div>
+      <div class="flow-tier flow-tier-output">
+        <span>Tickets → Payment / Edit Cards</span>
+        <span>Edit Profile · Host Profile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNEY MAP ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">User Journey</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Six phases from first hearing about the app to coming back for another event.
+      </p>
+    </div>
+
+    <div class="reveal overflow-x-auto" style="transition-delay:.08s">
+      <table class="effort-table w-full text-left">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Pre-Onboarding</th>
+            <th>Onboarding</th>
+            <th>Browse</th>
+            <th>Book</th>
+            <th>Attend</th>
+            <th>Post-Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Goal</td>
+            <td>Get out of house</td>
+            <td>Feel prepared &amp; safe</td>
+            <td>Find something exciting</td>
+            <td>Make a plan with someone</td>
+            <td>Feel part of something</td>
+            <td>Keep the momentum going</td>
+          </tr>
+          <tr>
+            <td>Touchpoints</td>
+            <td>Posters, peer referrals</td>
+            <td>App UI/UX</td>
+            <td>Event feed, filters</td>
+            <td>Event detail page</td>
+            <td>Maps, hosts</td>
+            <td>Review prompt, saved events</td>
+          </tr>
+          <tr>
+            <td>Pain Point</td>
+            <td>Doesn't know what to expect</td>
+            <td>Worries she won't fit in</td>
+            <td>Not many local Gen Z events</td>
+            <td>Nervous to commit</td>
+            <td>Language or age barrier</td>
+            <td>Falls out of habit easily</td>
+          </tr>
+          <tr>
+            <td>Emotion</td>
+            <td>Curious</td>
+            <td>Hopeful</td>
+            <td>Excited</td>
+            <td>Anxious</td>
+            <td>Surprised</td>
+            <td>Motivated</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ PERSONA ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Persona</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 md:grid-cols-[280px_1fr_1fr] gap-10 md:gap-16 border-t border-ink/10 dark:border-bone/10 pt-10" style="transition-delay:.08s">
+      <div>
+        <p class="font-serif text-2xl">Alex</p>
+        <p class="font-sans text-sm text-ink/60 dark:text-bone/60 mt-2">Age 20 — Barcelona, Spain</p>
+        <p class="font-sans text-sm text-ink/60 dark:text-bone/60">Student — introverted but curious</p>
+        <p class="font-sans text-sm text-ink/60 dark:text-bone/60 mt-2">Heavy phone user, prefers intuitive, visual-first apps.</p>
+      </div>
+      <div>
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-3">Goals</p>
+        <ul class="space-y-2 font-sans text-sm text-ink/70 dark:text-bone/70">
+          <li>Explore the city freely</li>
+          <li>Build new friendships</li>
+          <li>Find part-time work</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-3">Frustrations</p>
+        <ul class="space-y-2 font-sans text-sm text-ink/70 dark:text-bone/70">
+          <li>Feels out of place at some events</li>
+          <li>Doesn't speak fluent Spanish</li>
+          <li>Worries about not knowing anyone</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLOUR PALETTE ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Colour System</p>
+    </div>
+    <div class="reveal flex flex-col sm:flex-row" style="transition-delay:.06s">
+      <div class="swatch" style="background:#FFF6E2; color:#111;">FFF6E2</div>
+      <div class="swatch" style="background:#DED2E6; color:#111;">DED2E6</div>
+      <div class="swatch" style="background:#CDE8E1; color:#111;">CDE8E1</div>
+      <div class="swatch" style="background:#DCDBD7; color:#111;">DCDBD7</div>
+      <div class="swatch" style="background:#FC4C01; color:#fff;">FC4C01</div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I DID ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">What I Did</p>
+      </div>
+
+      <div class="max-w-3xl">
+        <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+          <li class="reveal flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Ran UX interviews and competitive analysis to build a scalable structure</li>
+          <li class="reveal flex gap-4" style="transition-delay:.04s"><span class="text-ink/30 dark:text-bone/30">—</span>Designed participatory onboarding flows and adaptive visual systems</li>
+          <li class="reveal flex gap-4" style="transition-delay:.08s"><span class="text-ink/30 dark:text-bone/30">—</span>Paced content using Ebbinghaus' memory theory</li>
+          <li class="reveal flex gap-4" style="transition-delay:.12s"><span class="text-ink/30 dark:text-bone/30">—</span>Built a custom SEAT feed that only unlocks post-event</li>
+          <li class="reveal flex gap-4" style="transition-delay:.16s"><span class="text-ink/30 dark:text-bone/30">—</span>Designed personalised onboarding via an archetype quiz and video-led landing page</li>
+          <li class="reveal flex gap-4" style="transition-delay:.2s"><span class="text-ink/30 dark:text-bone/30">—</span>Built and delivered the final deck in SEAT's own brand fonts and visual DNA</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OUTCOME ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-10">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Outcome</p>
+    </div>
+    <p class="reveal font-serif italic text-2xl md:text-4xl leading-[1.35] max-w-4xl">
+      "This wasn't just an app redesign — it was a shift in how SEAT could show up as a cultural entity in a crowded digital landscape."
+    </p>
+  </section>
+
+  <!-- ============ NEXT PROJECT ============ -->
+  <footer class="relative border-t border-ink/10 dark:border-bone/10">
+    <a href="07-gtb-brand-digital-build.html" class="next-project group block px-6 md:px-10 py-20 md:py-32 max-w-[1600px] mx-auto" style="--next-from:#1A0705; --next-to:#D83023;">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-6">Next — 07 / 08</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2 class="font-serif leading-[1.02]">
+          <span class="block text-[10vw] md:text-[5.5vw] group-hover:italic transition-[font-style]">GTB — Brand &amp; Digital Build</span>
+        </h2>
+        <span class="inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit shrink-0 transition-colors group-hover:text-[var(--accent)] group-hover:border-[var(--accent)]">
+          All work
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="px-6 md:px-10 pb-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-ink/10 dark:border-bone/10 pt-8">
+      <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-sans text-xs uppercase tracking-widest hover:text-[var(--accent)] transition-colors">LinkedIn ↗</a>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/30 dark:text-bone/30"></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>

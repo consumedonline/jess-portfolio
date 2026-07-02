@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Inclusion Programme — Jessica Issa</title>
+<meta name="description" content="Repositioning digital inclusion as a systemic intervention rather than skills training — currently closing the Define phase, presented 12+ times including at SOCITM, developed in collaboration with DSIT, and the source of an internal readability tool now used across three programmes." />
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink" style="--proj-from:#1A1423; --proj-to:#7B2D8E;">
+
+<div id="cursor-preview" class="hidden md:flex fixed top-0 left-0 z-50 w-40 h-52 rounded-sm pointer-events-none opacity-0 items-end p-4 overflow-hidden">
+  <p id="cursor-preview-label" class="font-sans text-xs uppercase tracking-widest text-white/90"></p>
+</div>
+
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="../index.html" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="../index.html#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="../index.html#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="../index.html#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="../index.html#work" class="mobile-link">Work</a>
+    <a href="../index.html#about" class="mobile-link">About</a>
+    <a href="../index.html#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ CASE HERO ============ -->
+  <section class="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-10 pt-32 pb-14 max-w-[1600px] mx-auto">
+
+    <div class="reveal absolute top-28 right-6 md:right-10 font-serif text-[13vw] md:text-[9vw] leading-none text-ink/[0.06] dark:text-bone/[0.06] select-none pointer-events-none">
+      03
+    </div>
+
+    <div class="reveal flex items-center gap-3 mb-8">
+      <span class="w-2.5 h-2.5 rounded-full case-swatch"></span>
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50">Project 03 / 08 — Social Policy</p>
+    </div>
+
+    <h1 class="reveal font-serif leading-[1.02] tracking-tightest2 max-w-5xl" style="transition-delay:.06s">
+      <span class="block text-[9vw] md:text-[5vw]">Digital Inclusion</span>
+      <span class="block text-[9vw] md:text-[5vw] italic">Programme</span>
+    </h1>
+
+    <div class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.14s">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Client</p>
+        <p class="font-sans text-sm">North East Lincolnshire Council</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Role</p>
+        <p class="font-sans text-sm">End-to-End Research, Service Design &amp; Internal Tooling</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Sector</p>
+        <p class="font-sans text-sm">Social Policy &amp; Inclusion</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Year</p>
+        <p class="font-sans text-sm">2025 — Present</p>
+      </div>
+    </div>
+
+    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.22s">
+      Scroll ↓
+    </div>
+  </section>
+
+  <!-- ============ CONTEXT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Context</p>
+      </div>
+      <div class="max-w-3xl">
+        <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3]">
+          A 2021 digital exclusion discovery dissolved before delivery. In 2025, following the Government's action plan, the programme was restarted from first principles.
+        </p>
+        <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+          I led the project end-to-end using a double diamond framework, positioning digital as a tool for reducing social exclusion — not the goal itself.
+        </p>
+        <p class="reveal mt-6 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.12s">
+          The programme is currently closing out the Define phase. The findings have been presented more than a dozen times, including at SOCITM, and the work is now developing in collaboration with DSIT.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORE ISSUES ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Core Issues Identified</p>
+      </div>
+      <div class="max-w-3xl divide-y divide-ink/10 dark:divide-bone/10">
+        <div class="reveal issue-row flex items-baseline gap-6 py-6">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">01</span>
+          <p class="font-serif text-xl md:text-2xl">Outdated digital inclusion webpages, last updated 2022</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.05s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">02</span>
+          <p class="font-serif text-xl md:text-2xl">Broken links and defunct support pathways</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.1s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">03</span>
+          <p class="font-serif text-xl md:text-2xl">Lack of coherent strategy or delivery ownership</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.15s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">04</span>
+          <p class="font-serif text-xl md:text-2xl">Fragmented historical initiatives with low uptake</p>
+        </div>
+        <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.2s">
+          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">05</span>
+          <p class="font-serif text-xl md:text-2xl">Digital capability treated as the problem, not structural exclusion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS STEPPER ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">A Double Diamond, Run Properly</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Five phases, each with its own purpose — nothing skipped to get to a roadmap faster.
+      </p>
+    </div>
+
+    <div class="reveal stepper" style="transition-delay:.1s">
+      <div class="stepper-item">
+        <span class="stepper-dot">01</span>
+        <p class="stepper-title">Set Up</p>
+        <p class="stepper-purpose">Align team and governance</p>
+      </div>
+      <div class="stepper-item">
+        <span class="stepper-dot">02</span>
+        <p class="stepper-title">Discovery &amp; Engagement</p>
+        <p class="stepper-purpose">Gather insights</p>
+      </div>
+      <div class="stepper-item" style="border-top-color: var(--accent);">
+        <span class="stepper-dot">03</span>
+        <p class="stepper-title">Define &amp; Synthesis</p>
+        <p class="stepper-purpose">Make sense of findings</p>
+        <p class="mt-2 font-sans text-[11px] uppercase tracking-widest text-[var(--accent)]">Closing now</p>
+      </div>
+      <div class="stepper-item">
+        <span class="stepper-dot">04</span>
+        <p class="stepper-title">Ideate &amp; Design Options</p>
+        <p class="stepper-purpose">Co-design and prototype</p>
+        <p class="mt-2 font-sans text-[11px] uppercase tracking-widest text-ink/35 dark:text-bone/35">Next</p>
+      </div>
+      <div class="stepper-item">
+        <span class="stepper-dot">05</span>
+        <p class="stepper-title">Action &amp; Next Steps</p>
+        <p class="stepper-purpose">Agree the next stage</p>
+      </div>
+    </div>
+
+    <p class="reveal mt-12 font-sans text-sm text-ink/50 dark:text-bone/50 max-w-2xl" style="transition-delay:.14s">
+      Still reaching out for additional engagement before this phase closes — the aim is that no one falls through the gaps before the programme moves into Develop.
+    </p>
+  </section>
+
+  <!-- ============ ENGAGEMENT BREADTH ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Getting The Buy-In, Then Getting Out There</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Before any of this could be designed, 140 staff needed to understand why service design works this way — then the research had to go where the evidence actually was.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10">
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8">
+        <p class="cluster-title">Internal Buy-In &amp; Methodology</p>
+        <p class="cluster-orgs">An SPP workshop with 140 staff members on insight statements and "How Might We" questions — teaching the underlying service design methodology so the whole organisation, not just this team, understood why it mattered.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.03s">
+        <p class="cluster-title">Lower Income Households</p>
+        <p class="cluster-orgs">Two sessions built around real scenarios and signposting, designed specifically for this group rather than adapted from a generic script.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.06s">
+        <p class="cluster-title">Careers Cafe</p>
+        <p class="cluster-orgs">Hyper-specific scenarios and signposting built for the people who use this service, not a repeat of the household sessions.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.09s">
+        <p class="cluster-title">Disabled Residents</p>
+        <p class="cluster-orgs">Targeted signposting work that also produced quick-win changes shipped to the front end of the website during the research itself.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.12s">
+        <p class="cluster-title">ESOL Communities</p>
+        <p class="cluster-orgs">Scenarios, signposting, pop-ups, community sessions and forums curated in Arabic and Polish, meeting people in their own language rather than expecting them to meet us in ours.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.15s">
+        <p class="cluster-title">Ongoing Outreach</p>
+        <p class="cluster-orgs">Additional engagement continuing right up to the close of Define — the list above is where we've been, not where we've stopped.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO IS EXCLUDED — VIGNETTES ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">From The Storyboard</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Three moments where a well-designed service still leaves someone out.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="reveal vignette">
+        <p class="vignette-who">Who is excluded — Young people entering the workforce</p>
+        <p class="vignette-quote">"Lack of employment-focused digital skills beyond smartphones and tablets."</p>
+      </div>
+      <div class="reveal vignette" style="transition-delay:.06s">
+        <p class="vignette-who">Who is excluded — Patients needing access to wellbeing services</p>
+        <p class="vignette-quote">"GPs lack awareness or clear digital referral routes into the service."</p>
+      </div>
+      <div class="reveal vignette" style="transition-delay:.12s">
+        <p class="vignette-who">Who is excluded — Older adults, 85 and over, managing personal finances</p>
+        <p class="vignette-quote">"Fears of being scammed means they won't carry out online transactions independently."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I DID ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
+      <div class="reveal">
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">What I Did</p>
+      </div>
+
+      <div class="max-w-3xl space-y-16">
+        <div class="reveal">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Re-established the foundations</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Conducted a quantitative and qualitative landscape review</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Audited existing initiatives and uptake data</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Mapped barriers to access and systemic constraints</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Identified targeted user segments</li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:.06s">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Led user research &amp; synthesis</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Facilitated workshops with lived-experience participants</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Generated 22 user stories from a single workshop</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Themed insights into 6 core exclusion drivers</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Reframed assumptions around "who is excluded"</li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:.12s">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Designed the intervention framework</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Created a storyboard aligned to real-world journeys</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Structured a sprint action plan with stakeholder accountability</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Developed problem statements and "How Might We" questions</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Aligned outcomes with the Marmot 8 Principles</li>
+          </ul>
+        </div>
+
+        <div class="reveal" style="transition-delay:.18s">
+          <p class="font-serif text-2xl md:text-3xl mb-6">Built internal capability and external visibility</p>
+          <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Presented findings more than 12 times, including at SOCITM</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Delivered an SPP workshop on insight statements and "How Might We" questions to 140 staff members, teaching the underlying service design methodology</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Built an actor behaviour map, insight stories and personas from the research</li>
+            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">—</span>Growing the work in collaboration with DSIT</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSIGHTS ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Six Insights</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        What the research kept surfacing, in the residents' own terms.
+      </p>
+    </div>
+
+    <div class="space-y-0 border-t border-ink/10 dark:border-bone/10">
+      <div class="reveal insight-row">
+        <p class="insight-title">01 — Digital access is not universal</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> Many people lack the devices, data or physical tools needed to complete digital services.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> low-income households, older people, people with disabilities, families with EHCP needs.</p>
+      </div>
+      <div class="reveal insight-row" style="transition-delay:.04s">
+        <p class="insight-title">02 — Digital confidence is fragile</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> People avoid digital services when they feel unsafe, scared or lack confidence, especially after a negative experience.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> older adults, parents and people in crisis.</p>
+      </div>
+      <div class="reveal insight-row" style="transition-delay:.08s">
+        <p class="insight-title">03 — The service assumes independence &amp; support</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> Digital journeys assume people can complete tasks alone, but many rely on family, friends or community groups.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> older people, people with disabilities and those with complex needs.</p>
+      </div>
+      <div class="reveal insight-row" style="transition-delay:.12s">
+        <p class="insight-title">04 — Info &amp; guidance is unclear or inaccessible</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> People cannot access services when information is unclear, poorly communicated, or unavailable in the right language or format.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> non-UK nationals, first-time users, people unfamiliar with the systems.</p>
+      </div>
+      <div class="reveal insight-row" style="transition-delay:.16s">
+        <p class="insight-title">05 — Digital services hide offline dependencies</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> Many "digital" services still require offline steps — printing, calling, attending — which creates hidden barriers.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> people without printers, people without confidence, people with limited time or mobility.</p>
+      </div>
+      <div class="reveal insight-row" style="transition-delay:.2s">
+        <p class="insight-title">06 — Digital skills are not aligned with service needs</p>
+        <p class="insight-body"><span class="insight-label">Insight —</span> Users may be digitally capable in everyday life but lack the specific skills needed for service access or employment systems.</p>
+        <p class="insight-excluded"><span class="insight-label">Who is excluded —</span> young people lacking workplace IT skills, volunteers and workers expected to use new digital tools.</p>
+      </div>
+    </div>
+
+    <p class="reveal mt-14 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.24s">
+      These insight themes are the design territories the closing presentation carried forward — aligned to the Marmot principles, and the working brief for Develop and co-design planning.
+    </p>
+  </section>
+
+  <!-- ============ READABILITY TOOL ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">A Tool Born From The Research</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Most of what the council puts in front of residents — letters, forms, website copy — is written at a reading age of 14 to 17. Some of the wards we serve test at an estimated reading age of 7.
+      </p>
+      <p class="reveal mt-8 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.08s">
+        That gap doesn't just mean content is hard to read. It means communication is likely misunderstood, creates fear and panic in exactly the moments residents most need clarity, and gives people a multitude of reasons to stop engaging altogether. It turned out that digital exclusion was, in part, a plain-language problem.
+      </p>
+    </div>
+
+    <div class="reveal flex flex-wrap items-end gap-x-16 gap-y-8 mb-16 max-w-2xl border-t border-ink/10 dark:border-bone/10 pt-10" style="transition-delay:.1s">
+      <div>
+        <p class="font-serif text-5xl md:text-6xl leading-none">14–17</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Reading age most council comms were written at</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl md:text-6xl leading-none">~7</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Estimated reading age in some wards we serve</p>
+      </div>
+    </div>
+
+    <p class="reveal font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl mb-14" style="transition-delay:.12s">
+      I built a staff-only readability tool from scratch — plain HTML, holds no data, lives on an internal server. It started as a single Flesch-Kincaid score. That didn't cover the basis, so I kept building.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10">
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8">
+        <p class="cluster-title">Auto-Detects Content Type</p>
+        <p class="cluster-orgs">Identifies whether text is a form, survey, press release or news update, and applies the formula mix that fits that context.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.03s">
+        <p class="cluster-title">Scores Across Four Formulas</p>
+        <p class="cluster-orgs">Flesch-Kincaid, Coleman-Liau, Gunning Fog and FORCAST, read together rather than relying on any single score.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.06s">
+        <p class="cluster-title">Targets Ward-Level Reading Age</p>
+        <p class="cluster-orgs">Where content is aimed at a specific ward, the tool shows the reading age that ward is estimated to sit at.</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.09s">
+        <p class="cluster-title">Prioritises &amp; Recommends</p>
+        <p class="cluster-orgs">Suggests phrase-level changes, ranks what needs fixing first, and recommends how to change it.</p>
+      </div>
+    </div>
+
+    <p class="reveal mt-14 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.14s">
+      It's in pilot testing now. The end goal is a Copilot-based agent available to every member of staff, so checking a piece of content before it goes out becomes the norm, not an extra step someone has to remember. And while it grew out of this programme, the same content-clarity lens is already shaping how forms read in the Environmental &amp; Regulatory rework and how content is written inside the Digital Platform Review's new Hub — one insight, three programmes.
+    </p>
+  </section>
+
+  <!-- ============ STAKEHOLDER CLUSTERS ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-16 max-w-3xl">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">The Stakeholder Map</p>
+      <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
+        Nine categories, dozens of organisations — none of them owning digital inclusion on their own.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-ink/10 dark:bg-bone/10 border border-ink/10 dark:border-bone/10">
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8">
+        <p class="cluster-title">Internal NELC</p>
+        <p class="cluster-orgs">Organisation &amp; Service Design Team, Customer Access Team, ICT &amp; Digital Team, Public Health &amp; Adult Social Care, Children's Services, Place Board</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.03s">
+        <p class="cluster-title">Strategic &amp; Policy</p>
+        <p class="cluster-orgs">Local Government, Combined Authority / LEP, Digital Poverty Alliance, Good Things Foundation, Dynamo Digital Inclusion, FutureDotNow, Humber Digital Skills Partnership</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.06s">
+        <p class="cluster-title">Health &amp; Wellbeing</p>
+        <p class="cluster-orgs">NHS Humber and North Yorkshire, GP Practices &amp; Primary Care, Carers Support Service, NAVIGO, Public Health NELC</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.09s">
+        <p class="cluster-title">Safety &amp; Inclusion</p>
+        <p class="cluster-orgs">Humberside Police, NEL Safeguarding Children, Fire &amp; Rescue Services, NSPCC / Domestic Abuse Services</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.12s">
+        <p class="cluster-title">Community &amp; Voluntary</p>
+        <p class="cluster-orgs">Foresight NEL, Centre4, Faraway CIC, Citizens Advice NEL, Voluntary Action NEL, ConnectNEL, Age UK, Later in Life Partnership</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.15s">
+        <p class="cluster-title">Employment &amp; Welfare</p>
+        <p class="cluster-orgs">Department for Work and Pensions, Jobcentre Plus, ERA Employment Project, YMCA Humber, Adult Careers Team (NELC)</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.18s">
+        <p class="cluster-title">Education &amp; Skills</p>
+        <p class="cluster-orgs">Lincs Digital, Create NEL, Schools &amp; Colleges, Grimsby Institute, UKSPF Projects, VCSE Skills Providers</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.21s">
+        <p class="cluster-title">Infrastructure &amp; Access</p>
+        <p class="cluster-orgs">Lincs Inspire Libraries, Housing Associations, SocialBox.Biz, IT Reuse for Good</p>
+      </div>
+      <div class="reveal cluster-card bg-paper dark:bg-void p-6 md:p-8" style="transition-delay:.24s">
+        <p class="cluster-title">Business &amp; Commercial</p>
+        <p class="cluster-orgs">Business Hive, Economy and Growth Team (NELC)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
+    <div class="reveal mb-14">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Impact So Far <span class="text-ink/40 dark:text-bone/40 normal-case tracking-normal">/ Define phase, closing now</span></p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6">
+        Repositioned digital inclusion as systemic intervention, not skills training
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.04s">
+        Created an evidence-based foundation for future funding bids
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.08s">
+        Embedded a digital inclusion lens into future service discovery standards
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.12s">
+        Established a framework to integrate inclusion into all council projects
+      </p>
+      <p class="reveal font-serif text-2xl md:text-3xl leading-[1.3] border-t border-ink/10 dark:border-bone/10 pt-6 md:col-span-2" style="transition-delay:.16s">
+        Surfaced a plain-language readability tool now shaping content across two other programmes
+      </p>
+    </div>
+
+    <p class="reveal mt-14 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70 leading-relaxed max-w-2xl" style="transition-delay:.2s">
+      Next: closing Define with continued outreach so no one falls through the gaps, then carrying the insight themes above into Develop and co-design planning.
+    </p>
+  </section>
+
+  <!-- ============ NEXT PROJECT ============ -->
+  <footer class="relative border-t border-ink/10 dark:border-bone/10">
+    <a href="04-neuv-brand-ux-system.html" class="next-project group block px-6 md:px-10 py-20 md:py-32 max-w-[1600px] mx-auto" style="--next-from:#00203D; --next-to:#0A64C2;">
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-6">Next — 04 / 08</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2 class="font-serif leading-[1.02]">
+          <span class="block text-[10vw] md:text-[5.5vw] group-hover:italic transition-[font-style]">Neuv — Brand &amp; UX System</span>
+        </h2>
+        <span class="inline-flex items-center gap-3 font-sans text-xs uppercase tracking-widest border-b border-ink dark:border-bone pb-2 w-fit shrink-0 transition-colors group-hover:text-[var(--accent)] group-hover:border-[var(--accent)]">
+          All work
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="px-6 md:px-10 pb-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-ink/10 dark:border-bone/10 pt-8">
+      <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-sans text-xs uppercase tracking-widest hover:text-[var(--accent)] transition-colors">LinkedIn ↗</a>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/30 dark:text-bone/30"></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="../script.js"></script>
+</body>
+</html>

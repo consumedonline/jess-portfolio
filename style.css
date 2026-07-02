@@ -1,0 +1,1099 @@
+/* ==========================================================================
+   Jessica Issa — Portfolio
+   Custom styles layered on top of Tailwind (CDN / Play).
+   Everything Tailwind's utility classes cannot express lives here:
+   grain texture, marquee animation, reveal-on-scroll transitions,
+   the cursor-following project preview, and the preloader.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Mobile-safe full-height hero. 100vh on phones is measured against the
+   LARGEST possible viewport (address bar collapsed), which is taller than
+   what's actually on screen when the page first loads — that gap is what
+   was reading as extra dead space once you scrolled past the footer.
+   100dvh tracks the real, current viewport and updates as browser chrome
+   shows/hides. Declared as a progressive enhancement over the min-h-[100vh]
+   Tailwind utility already on the hero section, so older browsers still
+   get a sane fallback.
+   -------------------------------------------------------------------------- */
+@supports (height: 100dvh) {
+  .hero-viewport {
+    min-height: 100dvh;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* overflow-x: hidden (on either <html> or <body>) forces the browser to
+     auto-convert the OTHER axis's overflow to "auto" per the CSS Overflow
+     spec, turning that element into its own nested scroll container. That
+     mismatch is what was stretching the homepage footer with dead space
+     below the LinkedIn/copyright line — moving the property between body
+     and html just moved which element had the problem. `overflow-x: clip`
+     clips the same way but is explicitly exempt from that auto-conversion
+     rule, so horizontal overflow is still hidden with no extra scroll
+     space anywhere on the page. */
+  overflow-x: clip;
+}
+
+/* --------------------------------------------------------------------------
+   Accent colour — the lime (#C6FF3D) reads brilliantly on the dark void
+   background but washes out to near-invisible on the light paper
+   background. Rather than one static Tailwind colour, it's a CSS variable
+   that swaps to a darker, more saturated olive in light mode so the accent
+   stays legible in both themes. Referenced in HTML via arbitrary-value
+   utilities, e.g. text-[var(--accent)], border-[var(--accent)].
+   -------------------------------------------------------------------------- */
+:root {
+  --accent: #6B7A00;
+}
+
+.dark {
+  --accent: #C6FF3D;
+}
+
+body {
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Film-grain / noise overlay — gives the flat colour fields an atmospheric,
+   physical texture instead of looking like a flat digital gradient.
+   -------------------------------------------------------------------------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Preloader
+   -------------------------------------------------------------------------- */
+#preloader {
+  transition: opacity 0.7s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.7s;
+}
+
+#preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Preloader glow — a soft, atmospheric radial wash behind the counter.
+   Purely decorative (aria-hidden) and independent of the counter logic in
+   script.js. The animated ring/vortex graphic that used to sit here has
+   been removed — it read as a stock loading-spinner rather than part of
+   the editorial system, so the counter and glow now carry the moment on
+   their own. */
+.preloader-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(198, 255, 61, 0.10), transparent 62%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal — elements start slightly translated / hidden and settle
+   into place once they cross the viewport threshold (see script.js).
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero headline lines slide up out of a clipped box rather than just fading */
+h1 .reveal {
+  transform: translateY(100%);
+}
+
+h1 .reveal.is-visible {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Project rows — hairline list with a subtle horizontal shift on hover to
+   signal interactivity without resorting to a drop shadow or card treatment.
+   Uses `transform` rather than `padding-left` so the shift is compositor-only
+   (no layout reflow) — mixing a reflow-triggering hover effect with the
+   rAF-driven cursor-preview overlay was the main source of the jank/glitch
+   reported on this interaction.
+   -------------------------------------------------------------------------- */
+.project-row {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.project-row:hover {
+  transform: translateX(1.25rem);
+}
+
+#work-list:hover .project-row {
+  opacity: 0.35;
+}
+
+#work-list .project-row:hover {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Cursor-following preview panel — a small designed icon on the project's
+   identity gradient. Deliberately not a photograph: the icon only needs to
+   be loosely related to the subject (a burger outline, a steering wheel),
+   the gradient underneath carries the actual brand identity.
+   `will-change: transform` keeps the rAF-driven position updates on the
+   compositor thread instead of provoking layout, which is what made this
+   panel feel glitchy when it was fighting the row's old padding transition.
+   -------------------------------------------------------------------------- */
+#cursor-preview {
+  position: fixed;
+  transition: opacity 0.35s ease;
+  will-change: transform;
+}
+
+#cursor-preview.is-active {
+  opacity: 1;
+}
+
+#cursor-preview-icon {
+  transition: opacity 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Skills marquee — duplicated content track scrolls infinitely; pauses on
+   hover so the copy is readable if someone wants to stop and look.
+   -------------------------------------------------------------------------- */
+.marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  /* Vertical breathing room so descenders (g, y, p) never touch the clip
+     edge — see .marquee-track line-height note below for why this pairing
+     matters whenever large type sits inside an overflow:hidden container. */
+  padding: 0.5em 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 2.5rem;
+  align-items: center;
+  padding-left: 2.5rem;
+  animation: marquee 32s linear infinite;
+  /* Tailwind's text-6xl ships line-height:1, which is exactly the font's
+     em-box with zero allowance for descenders. Combined with overflow:hidden
+     on the parent, that clips letters like g/y/p. Loosen it explicitly. */
+  line-height: 1.4;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile nav drawer
+   -------------------------------------------------------------------------- */
+#mobile-menu.is-open {
+  display: flex;
+}
+
+.mobile-link {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  padding-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Misc
+   -------------------------------------------------------------------------- */
+::selection {
+  background: #C6FF3D;
+  color: #111110;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Case study components — shared across every project page in /projects.
+   Each project sets --proj-from / --proj-to (identity gradient, matches the
+   colour used for that project's row on the homepage) on <body>, and
+   --next-from / --next-to on the closing next-project link.
+   ========================================================================== */
+
+.case-swatch {
+  display: inline-block;
+  background-image: linear-gradient(135deg, var(--proj-from, #111111), var(--proj-to, #333333));
+}
+
+/* --------------------------------------------------------------------------
+   Before / After workflow ladder
+   -------------------------------------------------------------------------- */
+.ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ladder li {
+  position: relative;
+  padding: 0.85rem 0 0.85rem 1.5rem;
+  margin-left: 0.25rem;
+  border-left: 2px solid;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+
+.ladder li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ladder-before li {
+  border-color: rgba(255, 90, 43, 0.3);
+  color: inherit;
+}
+
+.ladder-before li::before {
+  background: #FF5A2B;
+  opacity: 0.55;
+}
+
+.ladder-before li.ladder-end {
+  font-weight: 500;
+  border-color: #FF5A2B;
+}
+
+.ladder-before li.ladder-end::before {
+  opacity: 1;
+}
+
+.ladder-after li {
+  border-color: rgba(198, 255, 61, 0.35);
+}
+
+.ladder-after li::before {
+  background: #9FE023;
+  opacity: 0.7;
+}
+
+.ladder-after li.ladder-end {
+  font-weight: 500;
+  border-color: #9FE023;
+}
+
+.ladder-after li.ladder-end::before {
+  background: #9FE023;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Radial operating-model diagram — pure SVG, no raster assets. Reused across
+   project pages with different node counts / labels.
+   -------------------------------------------------------------------------- */
+.radial-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.12;
+  stroke-width: 1;
+}
+
+.radial-ring-inner {
+  stroke-dasharray: 3 7;
+  stroke-opacity: 0.16;
+}
+
+.radial-spoke {
+  stroke: currentColor;
+  stroke-opacity: 0.15;
+  stroke-width: 1;
+}
+
+.radial-center {
+  fill: currentColor;
+  fill-opacity: 0.06;
+  stroke: currentColor;
+  stroke-opacity: 0.25;
+  stroke-width: 1;
+}
+
+.radial-center-text {
+  fill: currentColor;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.radial-node {
+  fill: #C6FF3D;
+}
+
+.radial-label {
+  fill: currentColor;
+  opacity: 0.62;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Next-project footer link — colour wash on hover using that project's
+   identity gradient, echoing the cursor-preview panel on the homepage.
+   -------------------------------------------------------------------------- */
+.next-project {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.next-project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(135deg, var(--next-from, #111111), var(--next-to, #333333));
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.next-project:hover::before {
+  opacity: 0.14;
+}
+
+/* --------------------------------------------------------------------------
+   Issue rows on case study pages — same quiet hover cue as project-row.
+   -------------------------------------------------------------------------- */
+.issue-row {
+  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.issue-row:hover {
+  padding-left: 0.75rem;
+}
+
+/* ==========================================================================
+   Dependencies flow diagram (Project 02 and any project with a system
+   dependency map) — three stacked tiers connected by a single spine.
+   ========================================================================== */
+.flow-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 56rem;
+}
+
+.flow-tier-nodes span,
+.flow-tier-output span {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+.flow-tier-output span {
+  opacity: 0.85;
+  border-color: #9FE023;
+  color: #9FE023;
+}
+
+.flow-tier-hub span {
+  font-family: 'Fraunces', serif;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  padding: 1.1rem 2.25rem;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  background-image: linear-gradient(135deg, var(--proj-from, #111111), var(--proj-to, #333333));
+}
+
+.flow-connector {
+  width: 1px;
+  height: 2.5rem;
+  background: currentColor;
+  opacity: 0.15;
+}
+
+/* ==========================================================================
+   Impact / Effort quadrant chart — pure SVG scatter, reused wherever a
+   project needs to argue for sequencing or prioritisation visually.
+   ========================================================================== */
+.quadrant-axis {
+  stroke: currentColor;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5;
+}
+
+.quadrant-grid {
+  stroke: currentColor;
+  stroke-opacity: 0.08;
+  stroke-dasharray: 3 6;
+  stroke-width: 1;
+}
+
+.quadrant-tick {
+  fill: currentColor;
+  opacity: 0.4;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quadrant-axis-label {
+  fill: currentColor;
+  opacity: 0.6;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.quadrant-node {
+  fill: #C6FF3D;
+}
+
+.quadrant-node-high {
+  fill: #FF5A2B;
+}
+
+.quadrant-label {
+  fill: currentColor;
+  opacity: 0.75;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Effort / impact data table
+   ========================================================================== */
+.effort-table {
+  border-collapse: collapse;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  min-width: 640px;
+}
+
+.effort-table th {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  padding: 0 1rem 0.9rem 0;
+  border-bottom: 1px solid currentColor;
+  text-align: left;
+}
+
+.effort-table td {
+  padding: 1rem 1rem 1rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid currentColor;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.tag-high {
+  border-color: #FF5A2B;
+  color: #FF5A2B;
+  opacity: 1;
+}
+
+.tag-low {
+  border-color: #9FE023;
+  color: #9FE023;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Process stepper (Project 03 and any programme with a phased method) —
+   five bordered segments, each with its own dot, rather than one continuous
+   line. Sidesteps having to calculate a single spanning connector line that
+   would need to be recalculated whenever the item count or wrap point changes.
+   ========================================================================== */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .stepper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .stepper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stepper-item {
+  position: relative;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.stepper-dot {
+  position: absolute;
+  top: -0.8rem;
+  left: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, var(--proj-from, #111111), var(--proj-to, #333333));
+  color: #fff;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  margin-top: 0.75rem;
+}
+
+.stepper-purpose {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.55;
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   Narrative "who is excluded" vignette cards
+   ========================================================================== */
+.vignette {
+  border-top: 1px solid rgba(128, 128, 128, 0.18);
+  padding-top: 1.75rem;
+}
+
+.vignette-who {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  margin-bottom: 1.1rem;
+  line-height: 1.5;
+}
+
+.vignette-quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Insight rows — title in a fixed left column, insight + exclusion copy
+   stacked in the right column regardless of source markup order.
+   ========================================================================== */
+.insight-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  column-gap: 2.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.14);
+}
+
+.insight-title {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  align-self: start;
+}
+
+.insight-body {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  opacity: 0.75;
+}
+
+.insight-excluded {
+  grid-column: 2;
+  grid-row: 2;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  opacity: 0.5;
+  margin-top: 0.6rem;
+}
+
+.insight-label {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin-right: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .insight-row {
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+  }
+
+  .insight-title,
+  .insight-body,
+  .insight-excluded {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+/* ==========================================================================
+   Stakeholder cluster grid — the parent's 1px hairline background is a nice
+   idea in theory (cards touch, the gap shows the container colour through
+   as a shared line) but it's unreliable in practice: sub-pixel rounding on
+   1px gaps drops lines on some cells, and any grid whose item count doesn't
+   divide evenly into its column count leaves a bare, borderless patch in
+   the last row. Giving every card its own border sidesteps both problems —
+   doubled hairlines between adjacent cards just read as a slightly firmer
+   line, not a bug.
+   ========================================================================== */
+.cluster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  border: 1px solid rgba(128, 128, 128, 0.16);
+}
+
+.cluster-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+}
+
+.cluster-orgs {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Liquid-glass utility — a CSS-only approximation of Apple's frosted glass
+   material. Reserve this for elements that float above other content (nav
+   bars, floating cards, drawers). Do not use it over large bodies of text:
+   blurring content behind a paragraph makes the paragraph harder to read,
+   which is the opposite of what glass is for.
+   ========================================================================== */
+.glass {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25));
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 12px 40px -20px rgba(0, 0, 0, 0.25);
+}
+
+.dark .glass {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 12px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  /* Older browsers without backdrop-filter support still get a legible,
+     semi-opaque bar instead of a transparent one. */
+  .glass {
+    background-color: rgba(244, 241, 235, 0.92);
+  }
+
+  .dark .glass {
+    background-color: rgba(10, 10, 11, 0.92);
+  }
+}
+
+/* ==========================================================================
+   Type specimen cards (Project 04 and any brand-system case study)
+   ========================================================================== */
+.specimen-card {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.specimen-label {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.45;
+  margin-bottom: 1.5rem;
+}
+
+.specimen-word {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.specimen-note {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.55;
+  margin-top: 1.5rem;
+  max-width: 22rem;
+}
+
+/* ==========================================================================
+   Network node diagrams — Predictive Engine / Decision Layer style graphs
+   ========================================================================== */
+.network-edge {
+  stroke: currentColor;
+  stroke-opacity: 0.18;
+  stroke-width: 1;
+}
+
+.network-node {
+  fill: currentColor;
+  opacity: 0.45;
+}
+
+.network-node-root {
+  fill: #C6FF3D;
+}
+
+/* ==========================================================================
+   Stat tiles — dark identity-coloured cards for headline metrics
+   ========================================================================== */
+.stat-tile {
+  background-image: linear-gradient(150deg, var(--proj-from, #111111), var(--proj-to, #333333));
+  color: #fff;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-tile-number {
+  font-family: 'Fraunces', serif;
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+.stat-tile-label {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+
+.stat-tile-note {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.65;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Floor plan / spatial zoning diagram (Project 05 and any spatial project)
+   ========================================================================== */
+.floor-plan {
+  display: flex;
+  height: 180px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  overflow: hidden;
+}
+
+.floor-zone {
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Emotion curve chart
+   ========================================================================== */
+.emotion-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.35;
+  stroke-width: 1.5;
+}
+
+.emotion-dot {
+  fill: #C6FF3D;
+}
+
+.emotion-label {
+  fill: currentColor;
+  opacity: 0.55;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Colour palette swatches
+   ========================================================================== */
+.swatch {
+  flex: 1;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Horizontal chronological timeline (Project 07, Project 08 and any project
+   with dated milestones) — one continuous spine with dots along it, distinct
+   from the segmented .stepper used for method phases without fixed dates.
+   ========================================================================== */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.timeline-track {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(128, 128, 128, 0.25);
+  z-index: 0;
+}
+
+.timeline-point {
+  position: relative;
+  z-index: 1;
+  padding-top: 2rem;
+}
+
+.timeline-point::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, var(--proj-from, #111111), var(--proj-to, #333333));
+}
+
+.timeline-year {
+  display: block;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-label {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 720px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .timeline-track {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Vertical numbered steps (Project 08 and any sequential, undated plan) —
+   single left spine with a dot per step, distinct from the horizontal
+   .stepper (method phases) and .timeline (dated milestones).
+   ========================================================================== */
+.vertical-steps {
+  position: relative;
+  margin-left: 0.4rem;
+  border-left: 1px solid rgba(128, 128, 128, 0.25);
+  max-width: 32rem;
+}
+
+.vertical-step {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+
+.vertical-step:last-child {
+  padding-bottom: 0;
+}
+
+.vertical-step::before {
+  content: "";
+  position: absolute;
+  left: -4.5px;
+  top: 0.4rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, var(--proj-from, #111111), var(--proj-to, #333333));
+}
+
+.vertical-step-index {
+  display: block;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.4;
+  margin-bottom: 0.3rem;
+}
+
+.vertical-step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   Image plates — real deliverables embedded alongside the native type
+   sections, on projects where the actual visual output is part of the
+   evidence (brand photography, UI screens, moodboards).
+   ========================================================================== */
+.plate {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(128, 128, 128, 0.06);
+}
+
+.plate img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plate-caption {
+  margin-top: 1rem;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
+}
+
+/* ==========================================================================
+   Phone mockup — a minimal line frame for embedded app screenshots, kept
+   close to the screenshot's native resolution on purpose. Blowing a low-res
+   crop up to fill a wide column is what made the earlier SEAT plates read
+   as blurry; a modest, near-native size reads crisp instead.
+   ========================================================================== */
+.phone-mockup {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  border: 2px solid rgba(128, 128, 128, 0.3);
+  border-radius: 30px;
+  padding: 8px;
+  position: relative;
+  background: rgba(128, 128, 128, 0.04);
+}
+
+.phone-mockup img {
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  display: block;
+}
+
+.phone-mockup-notch {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(128, 128, 128, 0.4);
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .marquee-track,
+  html {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
