@@ -22,6 +22,22 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   404 page — locked to exactly one screen, no scrolling. Same dvh reasoning
+   as .hero-viewport above, but using a fixed height + overflow:hidden since
+   this section should never grow taller than the viewport.
+   -------------------------------------------------------------------------- */
+.notfound-viewport {
+  height: 100vh;
+  overflow: hidden;
+}
+
+@supports (height: 100dvh) {
+  .notfound-viewport {
+    height: 100dvh;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   /* overflow-x: hidden (on either <html> or <body>) forces the browser to

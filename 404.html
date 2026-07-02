@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page Not Found — Jessica Issa</title>
+<meta name="robots" content="noindex">
+
+<!-- Fonts -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+
+<!-- Tailwind (CDN / Play) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        },
+        colors: {
+          paper: '#F4F1EB',
+          ink: '#111110',
+          void: '#0A0A0B',
+          bone: '#EDEAE2',
+          accent: '#C6FF3D',
+          rust: '#FF5A2B',
+        },
+        letterSpacing: {
+          tightest2: '-0.06em',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink">
+
+<!-- ============ NAV ============ -->
+<header class="glass fixed top-0 inset-x-0 z-40 border-b border-ink/10 dark:border-bone/10">
+  <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+    <a href="/" class="font-serif text-sm md:text-base tracking-[0.2em] uppercase">Jessica&nbsp;Issa</a>
+
+    <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
+      <a href="/#work" class="hover:text-[var(--accent)] transition-colors">Work</a>
+      <a href="/#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="/#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
+        <span id="theme-icon" class="text-xs">☾</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+        <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 py-8 gap-6 text-lg font-serif border-t border-ink/10 dark:border-bone/10">
+    <a href="/#work" class="mobile-link">Work</a>
+    <a href="/#about" class="mobile-link">About</a>
+    <a href="/#contact" class="mobile-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ 404 ============ -->
+  <section class="notfound-viewport relative flex flex-col justify-center px-6 md:px-10 pt-24 md:pt-28 pb-6 md:pb-8 max-w-[1600px] mx-auto">
+
+    <p class="reveal font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50 mb-2 md:mb-3">
+      404
+    </p>
+
+    <h1 class="reveal font-serif leading-[0.8] tracking-tightest2">
+      <span class="block text-[min(20vw,14vh)] md:text-[min(14vw,17vh)]">Something</span>
+      <span class="block text-[min(20vw,14vh)] md:text-[min(14vw,17vh)] italic text-right">went wrong</span>
+    </h1>
+
+    <div class="reveal mt-3 md:mt-4 border-t border-ink/10 dark:border-bone/10 pt-3 md:pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-6">
+      <a href="/" class="group inline-flex items-center gap-3 w-fit font-sans text-xs uppercase tracking-widest bg-[var(--accent)] text-ink px-5 py-2.5 md:px-7 md:py-3.5 rounded-full hover:opacity-85 transition-opacity">
+        Take me back home
+        <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+      </a>
+
+      <div class="text-left md:text-right">
+        <p class="font-sans text-xs md:text-sm uppercase tracking-widest text-ink/40 dark:text-bone/40">
+          Page not found
+        </p>
+        <p class="font-sans text-sm md:text-base text-ink/70 dark:text-bone/70 max-w-xs md:max-w-sm md:ml-auto mt-1">
+          The page you are looking for does not exist or may have been moved. Keep exploring my site.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
