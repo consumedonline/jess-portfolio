@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMarquee();
   initMobileMenu();
   initFooterYear();
+  initMagneticButtons();
 });
 
 /* --------------------------------------------------------------------------
@@ -247,4 +248,59 @@ function initFooterYear() {
   var yearEl = document.getElementById("year");
   if (!yearEl) return;
   yearEl.textContent = "© " + new Date().getFullYear() + " — Jessica Issa";
+}
+
+/* --------------------------------------------------------------------------
+   Magnetic CTA buttons — the filled accent button (the .cta-button pattern,
+   currently just the 404 "back home" action) pulls its label slightly
+   toward the cursor within a small radius, then eases back on leave.
+   Desktop only, same touch check as the cursor preview above.
+
+   Only the inner [data-magnetic-content] span is moved by JS — the outer
+   button's hover/press states are pure CSS (see .cta-button in style.css)
+   so this never fights those transforms; it just rides alongside them.
+   -------------------------------------------------------------------------- */
+function initMagneticButtons() {
+  var buttons = document.querySelectorAll("[data-magnetic]");
+  if (!buttons.length) return;
+
+  var isTouch = window.matchMedia("(pointer: coarse)").matches;
+  if (isTouch) return;
+
+  var STRENGTH = 0.35;
+  var MAX_OFFSET = 10;
+
+  buttons.forEach(function (button) {
+    var content = button.querySelector("[data-magnetic-content]") || button;
+    var targetX = 0;
+    var targetY = 0;
+    var currentX = 0;
+    var currentY = 0;
+
+    function clamp(value) {
+      return Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, value));
+    }
+
+    button.addEventListener("mousemove", function (e) {
+      var rect = button.getBoundingClientRect();
+      var relX = e.clientX - (rect.left + rect.width / 2);
+      var relY = e.clientY - (rect.top + rect.height / 2);
+      targetX = clamp(relX * STRENGTH);
+      targetY = clamp(relY * STRENGTH);
+    });
+
+    button.addEventListener("mouseleave", function () {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function animate() {
+      currentX += (targetX - currentX) * 0.2;
+      currentY += (targetY - currentY) * 0.2;
+      content.style.transform = "translate(" + currentX.toFixed(2) + "px," + currentY.toFixed(2) + "px)";
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  });
 }

@@ -152,6 +152,12 @@ h1 .reveal.is-visible {
   transform: translateX(1.25rem);
 }
 
+/* Tactile press feedback — a slight settle on click/tap so the interaction
+   reads as physical rather than purely visual-hover. */
+.project-row:active {
+  transform: translateX(0.9rem) scale(0.995);
+}
+
 #work-list:hover .project-row {
   opacity: 0.35;
 }
@@ -231,6 +237,24 @@ h1 .reveal.is-visible {
 .mobile-link {
   border-bottom: 1px solid rgba(128, 128, 128, 0.15);
   padding-bottom: 1rem;
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-link:active {
+  opacity: 0.5;
+  transform: translateX(0.35rem);
+}
+
+/* Nav icon buttons (theme toggle, mobile menu trigger) — same press logic,
+   since these are the two buttons a mobile visitor taps most. */
+#theme-toggle,
+#menu-toggle {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#theme-toggle:active,
+#menu-toggle:active {
+  transform: scale(0.88);
 }
 
 /* --------------------------------------------------------------------------
@@ -399,6 +423,10 @@ a {
 
 .next-project:hover::before {
   opacity: 0.14;
+}
+
+.next-project:active::before {
+  opacity: 0.22;
 }
 
 /* --------------------------------------------------------------------------
@@ -765,6 +793,27 @@ a {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.09),
     0 12px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   Filled CTA button — the one place on the site that uses a solid accent
+   fill instead of an underline link, reserved for a single high-intent
+   action (currently: recovering from the 404 page). The shadow is tinted to
+   the accent hue rather than a generic black drop-shadow, and the pressed
+   state gives real tactile feedback rather than relying on hover alone.
+   -------------------------------------------------------------------------- */
+.cta-button {
+  box-shadow: 0 8px 24px -10px rgba(198, 255, 61, 0.35);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.cta-button:hover {
+  box-shadow: 0 10px 28px -8px rgba(198, 255, 61, 0.45);
+}
+
+.cta-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 4px 14px -8px rgba(198, 255, 61, 0.3);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
