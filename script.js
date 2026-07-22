@@ -1,58 +1,24 @@
 /* ==========================================================================
    Jessica Issa — Portfolio
    Vanilla JS only. No build step, no frameworks.
-   Handles: preloader, dark/light theme toggle, scroll-reveal animations,
-   the cursor-following project preview, the skills marquee, and the
-   mobile navigation drawer.
+   Handles: dark/light theme toggle, smooth scroll, scroll-reveal animations,
+   scroll parallax, the cursor-following project preview, the skills
+   marquee, the mobile navigation drawer, magnetic CTA buttons, and the
+   homepage hero background.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-  initPreloader();
   initTheme();
+  initSmoothScroll();
   initRevealOnScroll();
   initCursorPreview();
   initMarquee();
   initMobileMenu();
   initFooterYear();
   initMagneticButtons();
+  initParallax();
+  initHeroConstellation();
 });
-
-/* --------------------------------------------------------------------------
-   Preloader — counts from 0 to 100 to set an intentional, editorial tone
-   on load, then fades out and unlocks scrolling.
-   -------------------------------------------------------------------------- */
-function initPreloader() {
-  var preloader = document.getElementById("preloader");
-  var counter = document.getElementById("preloader-count");
-  if (!preloader || !counter) return;
-
-  document.documentElement.style.overflow = "hidden";
-
-  var current = 0;
-  var target = 100;
-  var duration = 1100;
-  var startTime = null;
-
-  function tick(timestamp) {
-    if (startTime === null) startTime = timestamp;
-    var elapsed = timestamp - startTime;
-    var progress = Math.min(elapsed / duration, 1);
-    current = Math.floor(progress * target);
-    counter.textContent = current + "%";
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    } else {
-      counter.textContent = "100%";
-      setTimeout(function () {
-        preloader.classList.add("is-hidden");
-        document.documentElement.style.overflow = "";
-      }, 250);
-    }
-  }
-
-  requestAnimationFrame(tick);
-}
 
 /* --------------------------------------------------------------------------
    Theme toggle — defaults to the atmospheric dark mode on first visit,
@@ -248,6 +214,289 @@ function initFooterYear() {
   var yearEl = document.getElementById("year");
   if (!yearEl) return;
   yearEl.textContent = "© " + new Date().getFullYear() + " — Jessica Issa";
+}
+
+/* --------------------------------------------------------------------------
+   Smooth scroll (Lenis) — wraps native scroll rather than replacing it, so
+   position:sticky, anchor links (#work, #about, #contact) and accessibility
+   all keep working exactly as before. Synced to GSAP's own ticker (the
+   documented Lenis+GSAP pattern) so Lenis and ScrollTrigger share a single
+   requestAnimationFrame loop instead of fighting over two.
+
+   Respects prefers-reduced-motion: if set, this function does nothing and
+   the browser's default native scroll is left completely untouched.
+   -------------------------------------------------------------------------- */
+var lenisInstance = null;
+
+function initSmoothScroll() {
+  if (typeof Lenis === "undefined" || typeof gsap === "undefined") return;
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  lenisInstance = new Lenis({
+    duration: 1.1,
+    smoothWheel: true,
+  });
+
+  if (typeof ScrollTrigger !== "undefined") {
+    lenisInstance.on("scroll", ScrollTrigger.update);
+  }
+
+  gsap.ticker.add(function (time) {
+    lenisInstance.raf(time * 1000);
+  });
+
+  // Lenis already handles its own frame timing; let GSAP's ticker drive
+  // everything on one clock instead of smoothing twice.
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll parallax — a small, deliberately subtle drift on the large
+   decorative index numbers (the faint "01" / "02" background numerals on
+   project hero sections and the homepage section markers). Purely additive:
+   it never touches the existing .reveal system, so the on-load reveal
+   animation behaves exactly as it did before. Skipped entirely if GSAP/
+   ScrollTrigger aren't loaded, or if the visitor prefers reduced motion.
+   -------------------------------------------------------------------------- */
+function initParallax() {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var targets = document.querySelectorAll("[data-parallax]");
+  if (!targets.length) return;
+
+  targets.forEach(function (el) {
+    var speed = parseFloat(el.getAttribute("data-parallax")) || 40;
+
+    gsap.to(el, {
+      y: speed,
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Hero background (constellation) — homepage only, hand-written canvas
+   effect. A field of dim points sits behind the hero copy; individual
+   points quietly "ignite" one at a time (never all at once), briefly
+   glowing brighter and drawing thin, low-opacity trailing lines to a
+   couple of nearby points, then fade back to their resting dim state.
+   Most points, most of the time, are just quiet dots — the network only
+   reveals itself in patches, which is the point ("Systems that hold under
+   pressure" as a network metaphor, not a static mesh of sticks).
+
+   Only runs in dark mode — colours are tuned for the void background, and
+   switching to light mode clears the canvas rather than trying to
+   recolour it live. Skipped entirely on touch devices and for
+   prefers-reduced-motion, same discipline as the rest of the site's motion.
+   -------------------------------------------------------------------------- */
+function initHeroConstellation() {
+  var canvas = document.getElementById("hero-constellation");
+  if (!canvas || !canvas.getContext) return;
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isTouch = window.matchMedia("(pointer: coarse)").matches;
+  if (prefersReducedMotion || isTouch) return;
+
+  var ctx = canvas.getContext("2d");
+  var container = canvas.parentElement;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  var CONNECT_RADIUS = 160;
+  var MAX_LINKS = 3;
+  var IGNITE_MIN = 2200;
+  var IGNITE_MAX = 6000;
+  var RAMP_UP = 550;
+  var HOLD = 1000;
+  var RAMP_DOWN = 800;
+
+  var points = [];
+  var running = false;
+  var rafId = null;
+
+  function seedPoints(w, h) {
+    var count = Math.round((w * h) / 16000);
+    count = Math.max(28, Math.min(count, 60));
+
+    points = [];
+    for (var i = 0; i < count; i++) {
+      points.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        state: "idle",
+        activation: 0,
+        stateStart: performance.now() + Math.random() * IGNITE_MAX,
+        links: []
+      });
+    }
+  }
+
+  function resize() {
+    var rect = container.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seedPoints(rect.width, rect.height);
+  }
+
+  function nearestLinks(point) {
+    return points
+      .filter(function (p) { return p !== point; })
+      .map(function (p) {
+        var dx = p.x - point.x;
+        var dy = p.y - point.y;
+        return { p: p, d: Math.sqrt(dx * dx + dy * dy) };
+      })
+      .filter(function (c) { return c.d < CONNECT_RADIUS; })
+      .sort(function (a, b) { return a.d - b.d; })
+      .slice(0, MAX_LINKS)
+      .map(function (c) { return c.p; });
+  }
+
+  function tick(now) {
+    if (!running) return;
+
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    ctx.clearRect(0, 0, w, h);
+
+    points.forEach(function (point) {
+      var elapsed = now - point.stateStart;
+
+      if (point.state === "idle") {
+        if (elapsed >= 0) {
+          point.state = "igniting";
+          point.stateStart = now;
+          point.links = nearestLinks(point);
+        }
+      } else if (point.state === "igniting") {
+        point.activation = Math.min(1, elapsed / RAMP_UP);
+        if (elapsed >= RAMP_UP) {
+          point.state = "holding";
+          point.stateStart = now;
+        }
+      } else if (point.state === "holding") {
+        point.activation = 1;
+        if (elapsed >= HOLD) {
+          point.state = "fading";
+          point.stateStart = now;
+        }
+      } else if (point.state === "fading") {
+        point.activation = Math.max(0, 1 - elapsed / RAMP_DOWN);
+        if (elapsed >= RAMP_DOWN) {
+          point.state = "idle";
+          point.activation = 0;
+          point.links = [];
+          point.stateStart = now + IGNITE_MIN + Math.random() * (IGNITE_MAX - IGNITE_MIN);
+        }
+      }
+
+      // Resting dot — always faintly present, whether or not this point
+      // is currently active. This is what keeps the field from going
+      // completely blank between ignitions.
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(198, 255, 61, 0.08)";
+      ctx.fill();
+
+      if (point.activation > 0) {
+        point.links.forEach(function (linked) {
+          ctx.beginPath();
+          ctx.moveTo(point.x, point.y);
+          ctx.lineTo(linked.x, linked.y);
+          ctx.strokeStyle = "rgba(198, 255, 61, " + (point.activation * 0.22).toFixed(3) + ")";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        // The "north star" itself — brighter core with a soft glow that
+        // scales with activation, so it visibly swells in and fades out
+        // rather than snapping on/off.
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 1.4 + point.activation * 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(198, 255, 61, " + (point.activation * 0.9).toFixed(3) + ")";
+        ctx.shadowColor = "rgba(198, 255, 61, " + (point.activation * 0.8).toFixed(3) + ")";
+        ctx.shadowBlur = 10 * point.activation;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    });
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  var scrollFade = null;
+
+  function start() {
+    if (running) return;
+    running = true;
+    resize();
+    rafId = requestAnimationFrame(tick);
+    window.addEventListener("resize", resize);
+
+    // Reacts to scroll: fades out as the hero scrolls past, rather than
+    // just sitting static regardless of where the visitor is on the page.
+    // (The gentle drift on the canvas itself is handled for free by the
+    // generic initParallax() system, via its data-parallax attribute.)
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      canvas.style.opacity = 1;
+      scrollFade = gsap.to(canvas, {
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+  }
+
+  function stop() {
+    running = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    window.removeEventListener("resize", resize);
+    if (scrollFade) {
+      scrollFade.scrollTrigger.kill();
+      scrollFade.kill();
+      scrollFade = null;
+    }
+    canvas.style.opacity = "";
+    var w = canvas.width / dpr;
+    var h = canvas.height / dpr;
+    if (w && h) ctx.clearRect(0, 0, w, h);
+  }
+
+  function sync() {
+    var isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
+      start();
+    } else {
+      stop();
+    }
+  }
+
+  sync();
+
+  var toggle = document.getElementById("theme-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", sync);
+  }
 }
 
 /* --------------------------------------------------------------------------

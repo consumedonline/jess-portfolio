@@ -6,6 +6,24 @@
 <title>Jessica Issa — Service &amp; Systems Designer</title>
 <meta name="description" content="Jessica Issa is a Service and Systems Designer working across complex public sector environments, aligning policy, operations and digital infrastructure to deliver resilient, scalable outcomes." />
 
+<link rel="canonical" href="https://jessicaissa.com/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jessica Issa",
+  "jobTitle": "Senior Service Designer",
+  "url": "https://jessicaissa.com/",
+  "sameAs": ["https://www.linkedin.com/in/jessicaissa"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "North East Lincolnshire Council"
+  },
+  "description": "Jessica Issa is a Service and Systems Designer working across complex public sector environments, aligning policy, operations and digital infrastructure to deliver resilient, scalable outcomes."
+}
+</script>
+
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jessicaissa.com/">
 <meta property="og:title" content="Jessica Issa — Service &amp; Systems Designer">
@@ -57,13 +75,6 @@
 
 <body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink">
 
-<!-- ============ PRELOADER ============ -->
-<div id="preloader" class="fixed inset-0 z-[100] bg-void flex flex-col items-center justify-center overflow-hidden">
-  <div class="preloader-glow absolute inset-0" aria-hidden="true"></div>
-  <div class="font-serif italic text-bone/60 text-sm tracking-widest uppercase mb-6 relative">Jessica Issa</div>
-  <div id="preloader-count" class="font-serif text-bone text-6xl md:text-8xl tabular-nums relative">0%</div>
-</div>
-
 <!-- ============ CURSOR PREVIEW (desktop only) ============ -->
 <div id="cursor-preview" class="glass hidden md:flex fixed top-0 left-0 z-50 w-28 h-32 rounded-2xl pointer-events-none opacity-0 flex-col items-center justify-center text-center gap-2 px-3 overflow-hidden">
   <svg id="cursor-preview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-ink dark:text-bone mx-auto"></svg>
@@ -104,6 +115,8 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero-viewport relative min-h-[100vh] flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 max-w-[1600px] mx-auto">
+    <canvas id="hero-constellation" class="absolute inset-0" data-parallax="50" aria-hidden="true"></canvas>
+
     <div class="reveal">
       <p class="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50 mb-8">
         Senior Service Designer — Public Sector Systems &amp; Digital Governance
@@ -138,7 +151,7 @@
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
 
       <div class="reveal">
-        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10">01</span>
+        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10" data-parallax="30">01</span>
         <p class="mt-4 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">About / Index</p>
       </div>
 
@@ -190,7 +203,7 @@
   <section id="work" class="relative px-6 md:px-10 py-28 md:py-40 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal flex items-end justify-between mb-14 md:mb-20">
       <div>
-        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10">02</span>
+        <span class="font-serif text-7xl md:text-8xl leading-none text-ink/10 dark:text-bone/10" data-parallax="30">02</span>
         <p class="mt-4 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Selected Work</p>
       </div>
       <p class="hidden md:block font-sans text-sm text-ink/40 dark:text-bone/40 max-w-xs text-right">
@@ -316,6 +329,11 @@
   </footer>
 
 </main>
+
+<!-- Smooth scroll + scroll-driven animation -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
 <script src="script.js"></script>
 
