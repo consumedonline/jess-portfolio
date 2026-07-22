@@ -366,6 +366,9 @@ a {
 
 .radial-node {
   fill: #C6FF3D;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .radial-label {
@@ -375,6 +378,11 @@ a {
   font-size: 12px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  transition: opacity 0.25s ease;
+}
+
+.radial-node:hover {
+  transform: scale(1.3);
 }
 
 /* --------------------------------------------------------------------------
@@ -475,6 +483,12 @@ a {
 /* ==========================================================================
    Impact / Effort quadrant chart — pure SVG scatter, reused wherever a
    project needs to argue for sequencing or prioritisation visually.
+
+   Draws itself in on scroll (see initQuadrantChart in script.js). Nodes get
+   a radial-gradient "bead" fill + drop-shadow filter (set inline on the
+   SVG, see the project page) instead of flat fill so they read as raised
+   and glossy at rest, no cursor movement required — that's discovered
+   through the hover state below instead.
    ========================================================================== */
 .quadrant-axis {
   stroke: currentColor;
@@ -509,11 +523,23 @@ a {
 }
 
 .quadrant-node {
-  fill: #C6FF3D;
+  fill: url(#nodeGlow);
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .quadrant-node-high {
-  fill: #FF5A2B;
+  fill: url(#nodeGlowHigh);
+}
+
+[data-quadrant-point]:hover .quadrant-node {
+  transform: scale(1.35);
+}
+
+[data-quadrant-point]:hover .quadrant-label {
+  opacity: 1;
 }
 
 .quadrant-label {
@@ -522,6 +548,7 @@ a {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
   letter-spacing: 0.02em;
+  transition: opacity 0.25s ease;
 }
 
 /* ==========================================================================
@@ -547,6 +574,14 @@ a {
 .effort-table td {
   padding: 1rem 1rem 1rem 0;
   border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+.effort-table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.effort-table tbody tr:hover {
+  background-color: rgba(198, 255, 61, 0.05);
 }
 
 .tag {
@@ -848,10 +883,25 @@ a {
 .network-node {
   fill: currentColor;
   opacity: 0.45;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.network-node:hover {
+  opacity: 1;
+  transform: scale(1.4);
 }
 
 .network-node-root {
   fill: #C6FF3D;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.network-node-root:hover {
+  transform: scale(1.25);
 }
 
 /* ==========================================================================
@@ -922,6 +972,13 @@ a {
 
 .emotion-dot {
   fill: #C6FF3D;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emotion-dot:hover {
+  transform: scale(1.5);
 }
 
 .emotion-label {

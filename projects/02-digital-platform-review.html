@@ -286,10 +286,26 @@
     </div>
 
     <div class="reveal flex justify-center" style="transition-delay:.1s">
-      <svg viewBox="-40 -30 700 620" class="quadrant-diagram w-full max-w-2xl h-auto text-ink dark:text-bone" role="img" aria-label="Impact versus effort quadrant chart plotting six workstreams: Content Excellence and Website Rationalisation at medium effort and high impact, CRM Integration at high effort and high impact, Marketing Cloud at medium effort and medium impact, Resident App at low effort and medium impact, and Social Media Hub at low effort and high impact">
+      <svg id="quadrant-chart" viewBox="-40 -30 700 620" class="quadrant-diagram w-full max-w-2xl h-auto text-ink dark:text-bone" role="img" aria-label="Impact versus effort quadrant chart plotting six workstreams: Content Excellence and Website Rationalisation at medium effort and high impact, CRM Integration at high effort and high impact, Marketing Cloud at medium effort and medium impact, Resident App at low effort and medium impact, and Social Media Hub at low effort and high impact">
 
-        <line x1="60" y1="40" x2="60" y2="480" class="quadrant-axis" />
-        <line x1="60" y1="480" x2="600" y2="480" class="quadrant-axis" />
+        <defs>
+          <radialGradient id="nodeGlow" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#F4FFC4" />
+            <stop offset="45%" stop-color="#C6FF3D" />
+            <stop offset="100%" stop-color="#7FA328" />
+          </radialGradient>
+          <radialGradient id="nodeGlowHigh" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#FFD9C4" />
+            <stop offset="45%" stop-color="#FF5A2B" />
+            <stop offset="100%" stop-color="#A83A1A" />
+          </radialGradient>
+          <filter id="nodeShadow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.4" />
+          </filter>
+        </defs>
+
+        <line data-quadrant-axis x1="60" y1="40" x2="60" y2="480" class="quadrant-axis" />
+        <line data-quadrant-axis x1="60" y1="480" x2="600" y2="480" class="quadrant-axis" />
 
         <text x="30" y="60" text-anchor="middle" class="quadrant-tick">High</text>
         <text x="30" y="264" text-anchor="middle" class="quadrant-tick">Med</text>
@@ -301,26 +317,38 @@
         <text x="510" y="512" text-anchor="middle" class="quadrant-tick">High</text>
         <text x="330" y="546" text-anchor="middle" class="quadrant-axis-label">Effort</text>
 
-        <line x1="60" y1="264" x2="600" y2="264" class="quadrant-grid" />
-        <line x1="330" y1="40" x2="330" y2="480" class="quadrant-grid" />
+        <line data-quadrant-grid x1="60" y1="264" x2="600" y2="264" class="quadrant-grid" />
+        <line data-quadrant-grid x1="330" y1="40" x2="330" y2="480" class="quadrant-grid" />
 
-        <circle cx="300" cy="60" r="7" class="quadrant-node" />
-        <text x="300" y="34" text-anchor="middle" class="quadrant-label">Content Excellence</text>
+        <g data-quadrant-point>
+          <circle cx="300" cy="60" r="8" class="quadrant-node" filter="url(#nodeShadow)" />
+          <text x="300" y="34" text-anchor="middle" class="quadrant-label">Content Excellence</text>
+        </g>
 
-        <circle cx="360" cy="60" r="7" class="quadrant-node" />
-        <text x="360" y="-2" text-anchor="middle" class="quadrant-label">Website Rationalisation</text>
+        <g data-quadrant-point>
+          <circle cx="360" cy="60" r="8" class="quadrant-node" filter="url(#nodeShadow)" />
+          <text x="360" y="-2" text-anchor="middle" class="quadrant-label">Website Rationalisation</text>
+        </g>
 
-        <circle cx="510" cy="60" r="7" class="quadrant-node quadrant-node-high" />
-        <text x="510" y="34" text-anchor="middle" class="quadrant-label">CRM Integration</text>
+        <g data-quadrant-point>
+          <circle cx="510" cy="60" r="8" class="quadrant-node quadrant-node-high" filter="url(#nodeShadow)" />
+          <text x="510" y="34" text-anchor="middle" class="quadrant-label">CRM Integration</text>
+        </g>
 
-        <circle cx="330" cy="264" r="7" class="quadrant-node" />
-        <text x="330" y="290" text-anchor="middle" class="quadrant-label">Marketing Cloud</text>
+        <g data-quadrant-point>
+          <circle cx="330" cy="264" r="8" class="quadrant-node" filter="url(#nodeShadow)" />
+          <text x="330" y="290" text-anchor="middle" class="quadrant-label">Marketing Cloud</text>
+        </g>
 
-        <circle cx="150" cy="264" r="7" class="quadrant-node" />
-        <text x="150" y="290" text-anchor="middle" class="quadrant-label">Resident App</text>
+        <g data-quadrant-point>
+          <circle cx="150" cy="264" r="8" class="quadrant-node" filter="url(#nodeShadow)" />
+          <text x="150" y="290" text-anchor="middle" class="quadrant-label">Resident App</text>
+        </g>
 
-        <circle cx="150" cy="60" r="7" class="quadrant-node" />
-        <text x="150" y="34" text-anchor="middle" class="quadrant-label">Social Media Hub</text>
+        <g data-quadrant-point>
+          <circle cx="150" cy="60" r="8" class="quadrant-node" filter="url(#nodeShadow)" />
+          <text x="150" y="34" text-anchor="middle" class="quadrant-label">Social Media Hub</text>
+        </g>
       </svg>
     </div>
   </section>

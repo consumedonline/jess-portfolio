@@ -3,8 +3,9 @@
    Vanilla JS only. No build step, no frameworks.
    Handles: dark/light theme toggle, smooth scroll, scroll-reveal animations,
    scroll parallax, the cursor-following project preview, the skills
-   marquee, the mobile navigation drawer, magnetic CTA buttons, and the
-   homepage hero background.
+   marquee, the mobile navigation drawer, magnetic CTA buttons, the
+   homepage hero background, and the scroll-triggered draw-in animations on
+   every diagram/chart across the project pages.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -18,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initMagneticButtons();
   initParallax();
   initHeroConstellation();
+  initQuadrantChart();
+  initDiagramReveal();
 });
 
 /* --------------------------------------------------------------------------
@@ -497,6 +500,274 @@ function initHeroConstellation() {
   if (toggle) {
     toggle.addEventListener("click", sync);
   }
+}
+
+/* --------------------------------------------------------------------------
+   Quadrant chart (Digital Platform Review) — a static diagram brought to
+   life on scroll. Two pieces, each guarded so this safely no-ops on every
+   other page that doesn't have this chart:
+
+   1. Scroll-triggered draw-in: axes stroke themselves in, the dashed grid
+      fades up, then each node settles into place (staggered) followed by
+      its label — sequenced and unhurried rather than all appearing at once
+      or bouncing in. Nodes use a radial-gradient "bead" fill + SVG
+      drop-shadow (set inline on the page) so they read as raised/glossy
+      without needing any live cursor interaction.
+   2. The effort table's rows stagger in on scroll to match.
+
+   An interactive cursor-tilt was tried here and dropped — too playful for
+   a case-study context. The hover states in style.css (node scale-up,
+   label brighten, row highlight) still provide interactivity; they just
+   don't require moving the mouse to discover.
+
+   Both respect prefers-reduced-motion by skipping entirely.
+   -------------------------------------------------------------------------- */
+function initQuadrantChart() {
+  if (typeof gsap === "undefined") return;
+
+  var svg = document.getElementById("quadrant-chart");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- 1. Scroll-triggered draw-in ----
+  if (svg && !prefersReducedMotion && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    var axes = svg.querySelectorAll("[data-quadrant-axis]");
+    var grid = svg.querySelectorAll("[data-quadrant-grid]");
+    var pointGroups = svg.querySelectorAll("[data-quadrant-point]");
+    var nodes = [];
+    var labels = [];
+
+    axes.forEach(function (line) {
+      var length = line.getTotalLength ? line.getTotalLength() : 500;
+      line.style.strokeDasharray = length;
+      line.style.strokeDashoffset = length;
+    });
+
+    gsap.set(grid, { opacity: 0 });
+
+    pointGroups.forEach(function (group) {
+      var node = group.querySelector(".quadrant-node");
+      var label = group.querySelector(".quadrant-label");
+      if (node) {
+        gsap.set(node, { scale: 0 });
+        nodes.push(node);
+      }
+      if (label) {
+        gsap.set(label, { opacity: 0, y: 6 });
+        labels.push(label);
+      }
+    });
+
+    var tl = gsap.timeline({
+      scrollTrigger: { trigger: svg, start: "top 75%", once: true },
+    });
+
+    tl.to(axes, { strokeDashoffset: 0, duration: 1, ease: "power2.out", stagger: 0.15 })
+      .to(grid, { opacity: 1, duration: 0.6, ease: "power1.out" }, "-=0.35")
+      .to(nodes, { scale: 1, duration: 0.55, ease: "power3.out", stagger: 0.09 }, "-=0.2")
+      .to(labels, { opacity: 0.75, y: 0, duration: 0.45, ease: "power1.out", stagger: 0.09 }, "-=0.4");
+  }
+
+  // ---- 2. Effort table row stagger-in ----
+  var rows = document.querySelectorAll(".effort-table tbody tr");
+  if (rows.length && !prefersReducedMotion && typeof ScrollTrigger !== "undefined") {
+    gsap.set(rows, { opacity: 0, x: -16 });
+    gsap.to(rows, {
+      opacity: 1,
+      x: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.08,
+      scrollTrigger: { trigger: ".effort-table", start: "top 80%", once: true },
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Static diagram reveal — the same "draws itself in on scroll" idea used
+   on the quadrant chart, extended to every other diagram/chart type across
+   the project pages: dependency flow maps, before/after ladders, radial
+   operating-model diagrams, network diagrams, the emotion curve, floor
+   plans, method steppers, horizontal timelines and vertical step lists.
+
+   Deliberately unhurried: durations sit around half a second, staggers are
+   gentle, and every ease is a plain power curve — no elastic/back overshoot,
+   nothing bouncy. The point is a quiet pulse of life to break up
+   text-heavy pages, not a flourish that calls attention to itself. Each
+   diagram fires once, the first time it scrolls into view.
+
+   Purely additive and self-contained: every block below only touches
+   elements it finds by class name, so this safely no-ops on any page
+   (or diagram type) that doesn't have that class. Skips entirely under
+   prefers-reduced-motion, same as every other motion feature on the site.
+   -------------------------------------------------------------------------- */
+function initDiagramReveal() {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var EASE = "power2.out";
+  var POP = "power3.out";
+
+  function drawLine(el) {
+    if (!el || !el.getTotalLength) return;
+    var length = el.getTotalLength();
+    el.style.strokeDasharray = length;
+    el.style.strokeDashoffset = length;
+  }
+
+  // ---- Dependency flow maps: tier by tier, connector by connector ----
+  document.querySelectorAll(".flow-map").forEach(function (map) {
+    var children = Array.prototype.slice.call(map.children);
+    if (!children.length) return;
+
+    var tl = gsap.timeline({ scrollTrigger: { trigger: map, start: "top 78%", once: true } });
+
+    children.forEach(function (child, i) {
+      if (child.classList.contains("flow-connector")) {
+        gsap.set(child, { scaleY: 0, transformOrigin: "top center" });
+        tl.to(child, { scaleY: 1, duration: 0.35, ease: EASE }, i === 0 ? 0 : "-=0.05");
+      } else {
+        var spans = child.querySelectorAll("span");
+        if (!spans.length) return;
+        gsap.set(spans, { opacity: 0, y: 10 });
+        tl.to(spans, { opacity: 1, y: 0, duration: 0.5, ease: EASE, stagger: 0.08 }, i === 0 ? 0 : "-=0.1");
+      }
+    });
+  });
+
+  // ---- Before/after workflow ladders ----
+  document.querySelectorAll(".ladder").forEach(function (ladder) {
+    var items = ladder.querySelectorAll("li");
+    if (!items.length) return;
+    var fromSide = ladder.classList.contains("ladder-after") ? 14 : -14;
+    gsap.set(items, { opacity: 0, x: fromSide });
+    gsap.to(items, {
+      opacity: 1,
+      x: 0,
+      duration: 0.5,
+      ease: EASE,
+      stagger: 0.08,
+      scrollTrigger: { trigger: ladder, start: "top 82%", once: true },
+    });
+  });
+
+  // ---- Radial operating-model / stakeholder-map diagrams ----
+  document.querySelectorAll(".radial-diagram").forEach(function (svg) {
+    var rings = svg.querySelectorAll(".radial-ring");
+    var spokes = svg.querySelectorAll(".radial-spoke");
+    var center = svg.querySelectorAll(".radial-center, .radial-center-text");
+    var nodes = svg.querySelectorAll(".radial-node");
+    var labels = svg.querySelectorAll(".radial-label");
+    if (!nodes.length) return;
+
+    spokes.forEach(drawLine);
+    gsap.set(rings, { opacity: 0 });
+    gsap.set(center, { opacity: 0, scale: 0.85, transformOrigin: "center" });
+    gsap.set(nodes, { scale: 0, transformOrigin: "center" });
+    gsap.set(labels, { opacity: 0 });
+
+    var tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: "top 75%", once: true } });
+    tl.to(rings, { opacity: 1, duration: 0.6, ease: EASE })
+      .to(center, { opacity: 1, scale: 1, duration: 0.5, ease: EASE }, "-=0.3")
+      .to(spokes, { strokeDashoffset: 0, duration: 0.6, ease: EASE, stagger: 0.06 }, "-=0.2")
+      .to(nodes, { scale: 1, duration: 0.4, ease: POP, stagger: 0.07 }, "-=0.3")
+      .to(labels, { opacity: 0.62, duration: 0.4, ease: EASE, stagger: 0.07 }, "-=0.35");
+  });
+
+  // ---- Network diagrams (Predictive Engine / Decision Layer style) ----
+  document.querySelectorAll(".network-diagram").forEach(function (svg) {
+    var edges = svg.querySelectorAll(".network-edge");
+    var nodes = svg.querySelectorAll(".network-node");
+    var root = svg.querySelectorAll(".network-node-root");
+    if (!nodes.length && !root.length) return;
+
+    edges.forEach(drawLine);
+    gsap.set(root, { scale: 0, transformOrigin: "center" });
+    gsap.set(nodes, { scale: 0, transformOrigin: "center" });
+
+    var tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: "top 80%", once: true } });
+    tl.to(root, { scale: 1, duration: 0.4, ease: POP })
+      .to(edges, { strokeDashoffset: 0, duration: 0.5, ease: EASE, stagger: 0.03 }, "-=0.1")
+      .to(nodes, { scale: 1, duration: 0.35, ease: POP, stagger: 0.025 }, "-=0.3");
+  });
+
+  // ---- Emotion curve chart ----
+  document.querySelectorAll(".emotion-chart").forEach(function (svg) {
+    var line = svg.querySelector(".emotion-line");
+    var dots = svg.querySelectorAll(".emotion-dot");
+    var labels = svg.querySelectorAll(".emotion-label");
+    if (!line) return;
+
+    drawLine(line);
+    gsap.set(dots, { scale: 0, transformOrigin: "center" });
+    gsap.set(labels, { opacity: 0, y: 6 });
+
+    var tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: "top 78%", once: true } });
+    tl.to(line, { strokeDashoffset: 0, duration: 1, ease: EASE })
+      .to(dots, { scale: 1, duration: 0.35, ease: POP, stagger: 0.12 }, "-=0.7")
+      .to(labels, { opacity: 0.55, y: 0, duration: 0.35, ease: EASE, stagger: 0.12 }, "-=0.6");
+  });
+
+  // ---- Floor plan / spatial zoning diagrams ----
+  document.querySelectorAll(".floor-plan").forEach(function (plan) {
+    var zones = plan.querySelectorAll(".floor-zone");
+    if (!zones.length) return;
+    gsap.set(zones, { opacity: 0, scaleX: 0, transformOrigin: "left center" });
+    gsap.to(zones, {
+      opacity: 1,
+      scaleX: 1,
+      duration: 0.6,
+      ease: EASE,
+      stagger: 0.1,
+      scrollTrigger: { trigger: plan, start: "top 82%", once: true },
+    });
+  });
+
+  // ---- Method steppers ----
+  document.querySelectorAll(".stepper").forEach(function (stepper) {
+    var items = stepper.querySelectorAll(".stepper-item");
+    if (!items.length) return;
+    gsap.set(items, { opacity: 0, y: 14 });
+    gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: EASE,
+      stagger: 0.08,
+      scrollTrigger: { trigger: stepper, start: "top 80%", once: true },
+    });
+  });
+
+  // ---- Horizontal chronological timelines ----
+  document.querySelectorAll(".timeline").forEach(function (timeline) {
+    var track = timeline.querySelector(".timeline-track");
+    var points = timeline.querySelectorAll(".timeline-point");
+    if (!points.length) return;
+    if (track) gsap.set(track, { scaleX: 0, transformOrigin: "left center" });
+    gsap.set(points, { opacity: 0, y: 12 });
+
+    var tl = gsap.timeline({ scrollTrigger: { trigger: timeline, start: "top 80%", once: true } });
+    if (track) tl.to(track, { scaleX: 1, duration: 0.7, ease: EASE });
+    tl.to(points, { opacity: 1, y: 0, duration: 0.5, ease: EASE, stagger: 0.08 }, track ? "-=0.4" : 0);
+  });
+
+  // ---- Vertical numbered step lists ----
+  document.querySelectorAll(".vertical-steps").forEach(function (list) {
+    var steps = list.querySelectorAll(".vertical-step");
+    if (!steps.length) return;
+    gsap.set(steps, { opacity: 0, x: -12 });
+    gsap.to(steps, {
+      opacity: 1,
+      x: 0,
+      duration: 0.5,
+      ease: EASE,
+      stagger: 0.1,
+      scrollTrigger: { trigger: list, start: "top 80%", once: true },
+    });
+  });
 }
 
 /* --------------------------------------------------------------------------
