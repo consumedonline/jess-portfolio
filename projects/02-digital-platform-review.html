@@ -56,6 +56,8 @@
 
 <body class="bg-paper dark:bg-void text-ink dark:text-bone font-sans antialiased selection:bg-[var(--accent)] selection:text-ink" style="--proj-from:#0F1B2D; --proj-to:#1F6F78;">
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <div id="cursor-preview" class="hidden md:flex fixed top-0 left-0 z-50 w-40 h-52 rounded-sm pointer-events-none opacity-0 items-end p-4 overflow-hidden">
   <p id="cursor-preview-label" class="font-sans text-xs uppercase tracking-widest text-white/90"></p>
 </div>
@@ -74,7 +76,7 @@
       <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-ink/20 dark:border-bone/20 flex items-center justify-center hover:border-[var(--accent)] transition-colors">
         <span id="theme-icon" class="text-xs">☾</span>
       </button>
-      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu">
+      <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
         <span class="block w-5 h-px bg-ink dark:bg-bone"></span>
       </button>
@@ -88,7 +90,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
   <!-- ============ CASE HERO ============ -->
   <section class="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-10 pt-32 pb-14 max-w-[1600px] mx-auto">
@@ -99,7 +101,7 @@
 
     <div class="reveal flex items-center gap-3 mb-8">
       <span class="w-2.5 h-2.5 rounded-full case-swatch"></span>
-      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/50 dark:text-bone/50">Project 02 / 08 · Digital Governance</p>
+      <p class="font-sans text-xs uppercase tracking-[0.3em] text-ink/60 dark:text-bone/50">Project 02 / 08 · Digital Governance</p>
     </div>
 
     <h1 class="reveal font-serif leading-[1.02] tracking-tightest2 max-w-5xl" style="transition-delay:.06s">
@@ -109,24 +111,24 @@
 
     <div class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl border-t border-ink/10 dark:border-bone/10 pt-6" style="transition-delay:.14s">
       <div>
-        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Client</p>
+        <p class="text-[10px] uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-1">Client</p>
         <p class="font-sans text-sm">North East Lincolnshire Council</p>
       </div>
       <div>
-        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Role</p>
+        <p class="text-[10px] uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-1">Role</p>
         <p class="font-sans text-sm">Digital Governance &amp; Platform Strategy</p>
       </div>
       <div>
-        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Sector</p>
+        <p class="text-[10px] uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-1">Sector</p>
         <p class="font-sans text-sm">Public Sector Digital Platform</p>
       </div>
       <div>
-        <p class="text-[10px] uppercase tracking-widest text-ink/40 dark:text-bone/40 mb-1">Year</p>
+        <p class="text-[10px] uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-1">Year</p>
         <p class="font-sans text-sm">2025 – Present</p>
       </div>
     </div>
 
-    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/40 dark:text-bone/40" style="transition-delay:.22s">
+    <div class="reveal absolute bottom-8 right-6 md:right-10 font-sans text-[11px] uppercase tracking-widest text-ink/60 dark:text-bone/50" style="transition-delay:.22s">
       Scroll ↓
     </div>
   </section>
@@ -135,7 +137,7 @@
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
       <div class="reveal">
-        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Context</p>
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50">Context</p>
       </div>
       <div class="max-w-3xl">
         <p class="reveal font-serif text-2xl md:text-4xl leading-[1.3]">
@@ -153,11 +155,11 @@
     <div class="reveal flex flex-wrap items-end gap-x-16 gap-y-8 mt-14 max-w-2xl border-t border-ink/10 dark:border-bone/10 pt-10" style="transition-delay:.16s">
       <div>
         <p class="font-serif text-5xl md:text-6xl leading-none">2M</p>
-        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year · main statutory site</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year · main statutory site</p>
       </div>
       <div>
         <p class="font-serif text-5xl md:text-6xl leading-none">263k</p>
-        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year · microsites, combined</p>
+        <p class="mt-3 font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 max-w-[13rem] leading-relaxed">Views a year · microsites, combined</p>
       </div>
     </div>
 
@@ -170,31 +172,31 @@
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
       <div class="reveal">
-        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Core Issues Identified</p>
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50">Core Issues Identified</p>
       </div>
       <div class="max-w-3xl divide-y divide-ink/10 dark:divide-bone/10">
         <div class="reveal issue-row flex items-baseline gap-6 py-6">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">01</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">01</span>
           <p class="font-serif text-xl md:text-2xl">Interim governance with unclear decision authority</p>
         </div>
         <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.05s">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">02</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">02</span>
           <p class="font-serif text-xl md:text-2xl">Homepage redesign stuck in a prolonged "revamp" state</p>
         </div>
         <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.1s">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">03</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">03</span>
           <p class="font-serif text-xl md:text-2xl">6,000+ pieces of content with complex duplication</p>
         </div>
         <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.15s">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">04</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">04</span>
           <p class="font-serif text-xl md:text-2xl">No prioritisation of user-facing content</p>
         </div>
         <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.2s">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">05</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">05</span>
           <p class="font-serif text-xl md:text-2xl">Web team operating in reactive, high-stress mode</p>
         </div>
         <div class="reveal issue-row flex items-baseline gap-6 py-6" style="transition-delay:.25s">
-          <span class="font-serif text-lg text-ink/30 dark:text-bone/30 w-8">06</span>
+          <span class="font-serif text-lg text-ink/60 dark:text-bone/50 w-8">06</span>
           <p class="font-serif text-xl md:text-2xl">Workstreams defined but not sequenced or dependency-mapped</p>
         </div>
       </div>
@@ -204,7 +206,7 @@
   <!-- ============ THE FRAGMENTED ESTATE ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-16 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">The Fragmented Estate</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">The Fragmented Estate</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         A statutory site and a scatter of microsites, all publishing independently, with nothing telling any of them what the others were doing.
       </p>
@@ -237,39 +239,39 @@
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-20">
       <div class="reveal">
-        <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">What I Did</p>
+        <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50">What I Did</p>
       </div>
 
       <div class="max-w-3xl space-y-16">
         <div class="reveal">
           <p class="font-serif text-2xl md:text-3xl mb-6">Reframed the programme into actionable structure</p>
           <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Mapped cross-workstream dependencies</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Designed a 3×3 impact matrix and prioritisation criteria</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Created estimated effort modelling to guide sequencing</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Facilitated workshops across IT, Web, Comms, Research &amp; Transformation</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Mapped cross-workstream dependencies</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Designed a 3×3 impact matrix and prioritisation criteria</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Created estimated effort modelling to guide sequencing</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Facilitated workshops across IT, Web, Comms, Research &amp; Transformation</li>
           </ul>
         </div>
 
         <div class="reveal" style="transition-delay:.06s">
           <p class="font-serif text-2xl md:text-3xl mb-6">Redesigned content governance workflow</p>
           <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Introduced a Salesforce submission form with strict criteria</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Automated routing based on functional vs. promotional need</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Reduced individual gatekeeping pressure</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Embedded structured decision-making into the process</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Introduced a Salesforce submission form with strict criteria</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Automated routing based on functional vs. promotional need</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Reduced individual gatekeeping pressure</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Embedded structured decision-making into the process</li>
           </ul>
         </div>
 
         <div class="reveal" style="transition-delay:.12s">
           <p class="font-serif text-2xl md:text-3xl mb-6">Structured six workstreams into phased delivery</p>
           <ul class="space-y-3 font-sans text-base md:text-lg text-ink/70 dark:text-bone/70">
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Website rationalisation</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>CRM integration &amp; unified digital platform</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Resident mobile app</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Marketing Cloud integration</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Social media hub</li>
-            <li class="flex gap-4"><span class="text-ink/30 dark:text-bone/30">·</span>Content excellence initiative</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Website rationalisation</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>CRM integration &amp; unified digital platform</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Resident mobile app</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Marketing Cloud integration</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Social media hub</li>
+            <li class="flex gap-4"><span class="text-ink/60 dark:text-bone/50">·</span>Content excellence initiative</li>
           </ul>
         </div>
       </div>
@@ -279,7 +281,7 @@
   <!-- ============ IMPACT / EFFORT QUADRANT ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-16 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Prioritisation · Phase One</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">Prioritisation · Phase One</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         Six workstreams, plotted against resident impact and delivery effort: the sequencing argument made visible, and the case that first got the group moving again.
       </p>
@@ -356,7 +358,7 @@
   <!-- ============ ESTIMATED EFFORT TABLE ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-14">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Estimated Effort Model · Phase One</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50">Estimated Effort Model · Phase One</p>
     </div>
 
     <div class="reveal overflow-x-auto" style="transition-delay:.06s">
@@ -414,7 +416,7 @@
   <!-- ============ THE BIGGER PROPOSAL ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-14 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Beyond The Roadmap</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">Beyond The Roadmap</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         Six sequenced workstreams would have got the programme moving. They would not have fixed the fragmentation underneath it.
       </p>
@@ -433,7 +435,7 @@
   <!-- ============ TWO SITES, FIVE PATHWAYS ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-16 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">The New Architecture</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">The New Architecture</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         Down to two core sites: the statutory site standing alone, and a single resident-facing platform (working name "the Hub") for everything else.
       </p>
@@ -487,7 +489,7 @@
   <!-- ============ BUILT TO BE MEASURED ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-16 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Built To Be Measured</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">Built To Be Measured</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         Everything the fragmented estate couldn't see becomes trackable inside the Hub: full journey tracking, evidence-based content decisions, booking and conversion data, comms effectiveness, and a working evidence base for investment decisions.
       </p>
@@ -520,7 +522,7 @@
   <!-- ============ PHASING ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-16 max-w-3xl">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-4">Phasing · Three Quarters, Flexible Throughout</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-4">Phasing · Three Quarters, Flexible Throughout</p>
       <p class="font-serif text-2xl md:text-4xl leading-[1.3]">
         A pilot migration, then measurement, then full transition, adjusted along the way rather than fixed in advance.
       </p>
@@ -550,7 +552,7 @@
   <!-- ============ IMPACT ============ -->
   <section class="relative px-6 md:px-10 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-ink/10 dark:border-bone/10">
     <div class="reveal mb-14">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50">Impact <span class="text-ink/40 dark:text-bone/40 normal-case tracking-normal">/ Pilot in progress</span></p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50">Impact <span class="text-ink/60 dark:text-bone/50 normal-case tracking-normal">/ Pilot in progress</span></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
@@ -575,7 +577,7 @@
   <!-- ============ NEXT PROJECT ============ -->
   <footer class="relative border-t border-ink/10 dark:border-bone/10">
     <a href="03-digital-inclusion-programme.html" class="next-project group block px-6 md:px-10 py-20 md:py-32 max-w-[1600px] mx-auto" style="--next-from:#1A1423; --next-to:#7B2D8E;">
-      <p class="font-sans text-xs uppercase tracking-widest text-ink/50 dark:text-bone/50 mb-6">Next · 03 / 08</p>
+      <p class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50 mb-6">Next · 03 / 08</p>
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <h2 class="font-serif leading-[1.02]">
           <span class="block text-[10vw] md:text-[5.5vw] group-hover:italic transition-[font-style]">Digital Inclusion Programme</span>
@@ -589,7 +591,7 @@
 
     <div class="px-6 md:px-10 pb-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-ink/10 dark:border-bone/10 pt-8">
       <a href="https://www.linkedin.com/in/jessicaissa" target="_blank" rel="noopener" class="font-sans text-xs uppercase tracking-widest hover:text-[var(--accent)] transition-colors">LinkedIn ↗</a>
-      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/30 dark:text-bone/30"></span>
+      <span id="year" class="font-sans text-xs uppercase tracking-widest text-ink/60 dark:text-bone/50"></span>
     </div>
   </footer>
 
