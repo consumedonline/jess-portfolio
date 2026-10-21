@@ -1,0 +1,84 @@
+{
+  "redirects": [
+    {
+      "source": "/projects/01-regulatory-change-programme",
+      "destination": "/projects/02-regulatory-change-programme.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/02-digital-platform-review",
+      "destination": "/projects/03-digital-platform-review.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/03-digital-inclusion-programme",
+      "destination": "/projects/01-digital-inclusion-programme.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/04-neuv-brand-ux-system",
+      "destination": "/projects/08-neuv-brand-ux-system.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/05-mango-experiential-retail",
+      "destination": "/projects/06-mango-experiential-retail.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/06-seat-anima-design",
+      "destination": "/projects/07-seat-anima-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/07-gtb-brand-digital-build",
+      "destination": "/projects/04-gtb-brand-digital-build.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/08-moora-foods-transition",
+      "destination": "/projects/05-moora-foods-transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/01-regulatory-change-programme.html",
+      "destination": "/projects/02-regulatory-change-programme.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/02-digital-platform-review.html",
+      "destination": "/projects/03-digital-platform-review.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/03-digital-inclusion-programme.html",
+      "destination": "/projects/01-digital-inclusion-programme.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/04-neuv-brand-ux-system.html",
+      "destination": "/projects/08-neuv-brand-ux-system.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/05-mango-experiential-retail.html",
+      "destination": "/projects/06-mango-experiential-retail.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/06-seat-anima-design.html",
+      "destination": "/projects/07-seat-anima-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/07-gtb-brand-digital-build.html",
+      "destination": "/projects/04-gtb-brand-digital-build.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects/08-moora-foods-transition.html",
+      "destination": "/projects/05-moora-foods-transition.html",
+      "permanent": true
+    }
+  ]
+}

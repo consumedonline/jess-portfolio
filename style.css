@@ -1545,9 +1545,13 @@ div:has(> .insight-row) > .insight-row {
   overflow-x: auto;
   scroll-snap-type: x proximity;
   padding: 0.35rem 0.15rem 1.1rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(128, 128, 128, 0.4) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+}
+
+.pc-row::-webkit-scrollbar {
+  display: none;
 }
 
 .pc {
@@ -1823,3 +1827,160 @@ div:has(> .insight-row) > .insight-row {
     height: 2.4rem;
   }
 }
+
+
+/* ==========================================================================
+   Case study diagrams: weekly loop, estate consolidation, priority matrix.
+   ========================================================================== */
+.loop-arc {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.45;
+  stroke-width: 1.75;
+}
+
+.loop-head {
+  fill: currentColor;
+  fill-opacity: 0.6;
+}
+
+.loop-node {
+  fill: var(--accent);
+}
+
+.loop-node-big {
+  stroke: none;
+}
+
+.loop-num {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  fill: #111110;
+}
+
+.est-tag {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: currentColor;
+  fill-opacity: 0.6;
+}
+
+.mx {
+  max-width: 760px;
+  overflow-x: auto;
+  border-radius: 18px;
+  padding: 0.5rem 1.25rem 0.75rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+}
+
+.mx-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1.3fr) repeat(4, minmax(70px, 1fr)) 48px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  min-width: 560px;
+}
+
+.mx-row:last-child {
+  border-bottom: 0;
+}
+
+.mx-head {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.mx-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.02rem;
+}
+
+.mx-bar {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(128, 128, 128, 0.2);
+  overflow: hidden;
+}
+
+.mx-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--proj-to, var(--accent));
+}
+
+.mx-rank {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-align: right;
+  opacity: 0.8;
+}
+
+
+/* At-a-glance playing cards: the project summary at the top of each case study.
+   Slightly larger than the visual cards so a full sentence fits. */
+.pc-lg {
+  flex: 0 0 214px;
+  aspect-ratio: auto;
+  min-height: 290px;
+}
+
+.pc-text {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.pc-text-lg {
+  font-family: 'Fraunces', serif;
+  font-size: 21px;
+  line-height: 1.3;
+  margin-top: 0.5rem;
+}
+
+.pc-hot {
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent 62%),
+    var(--glass-bg);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+/* Reading progress on case study pages */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: var(--accent);
+  z-index: 70;
+  pointer-events: none;
+}
+
+
+/* Small illustration blocks inside playing cards (Neuv design system) */
+.art { height: 58px; margin: 4px 0 10px; display: flex; align-items: center; gap: 4px; color: currentColor; }
+.a-ladder { flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; }
+.a-ladder i { display: block; height: 4px; border-radius: 2px; background: currentColor; opacity: 0.25; }
+.a-ladder.on i { background: var(--proj-to, #2E86E8); opacity: 1; }
+.a-dots { flex-wrap: wrap; gap: 5px; align-content: center; }
+.a-dots i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; opacity: 0.22; }
+.a-dots i.hi { background: var(--proj-to, #2E86E8); opacity: 1; }
+.a-num { font-family: 'Fraunces', serif; font-size: 34px; color: var(--proj-to, #2E86E8); justify-content: flex-start; }
+.a-sw { gap: 5px; }
+.a-sw i { display: block; flex: 1; height: 34px; border-radius: 7px; }

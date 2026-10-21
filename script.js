@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initQuadrantChart();
   initDiagramReveal();
   initCardRows();
+  initReadingProgress();
 });
 
 /* --------------------------------------------------------------------------
@@ -907,4 +908,26 @@ function initCardRows() {
     setTimeout(update, 400);
     window.addEventListener("load", update);
   });
+}
+
+
+/* --------------------------------------------------------------------------
+   Reading progress — a thin accent line across the top of case study pages.
+   -------------------------------------------------------------------------- */
+function initReadingProgress() {
+  if (!document.querySelector(".next-project")) return;
+  var bar = document.createElement("div");
+  bar.className = "read-progress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+
+  function update() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    bar.style.transform = "scaleX(" + p + ")";
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
