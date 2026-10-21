@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initHeroConstellation();
   initQuadrantChart();
   initDiagramReveal();
+  initCardRows();
 });
 
 /* --------------------------------------------------------------------------
@@ -826,5 +827,84 @@ function initMagneticButtons() {
     }
 
     requestAnimationFrame(animate);
+  });
+}
+
+
+/* --------------------------------------------------------------------------
+   Card rows (case study visuals) — sideways-scrolling rows of small cards.
+   A bare scrollbar is easy to miss, so each row gets previous/next buttons
+   that only appear when there is more to see, plus mouse drag for desktop.
+   Touch and trackpad scrolling work natively; keyboard arrows work because
+   the row is focusable.
+   -------------------------------------------------------------------------- */
+function initCardRows() {
+  var rows = document.querySelectorAll(".pc-row");
+  if (!rows.length) return;
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  rows.forEach(function (row) {
+    var wrap = document.createElement("div");
+    wrap.className = "pc-wrap";
+    row.parentNode.insertBefore(wrap, row);
+    wrap.appendChild(row);
+
+    function makeBtn(dir) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "pc-nav pc-nav-" + dir;
+      b.setAttribute("aria-label", dir === "next" ? "Show next cards" : "Show previous cards");
+      b.innerHTML = dir === "next" ? "&rarr;" : "&larr;";
+      wrap.appendChild(b);
+      return b;
+    }
+
+    var prev = makeBtn("prev");
+    var next = makeBtn("next");
+
+    function step() {
+      var card = row.querySelector(".pc");
+      return card ? (card.getBoundingClientRect().width + 14) * 2 : 300;
+    }
+
+    function update() {
+      var max = row.scrollWidth - row.clientWidth;
+      var overflow = max > 4;
+      wrap.classList.toggle("has-overflow", overflow);
+      prev.classList.toggle("is-hidden", !overflow || row.scrollLeft <= 4);
+      next.classList.toggle("is-hidden", !overflow || row.scrollLeft >= max - 4);
+    }
+
+    prev.addEventListener("click", function () {
+      row.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" });
+    });
+    next.addEventListener("click", function () {
+      row.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" });
+    });
+
+    row.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+
+    // Mouse drag to scroll (desktop)
+    var down = false, startX = 0, startLeft = 0, moved = false;
+    row.addEventListener("mousedown", function (e) {
+      down = true; moved = false; startX = e.pageX; startLeft = row.scrollLeft;
+      row.classList.add("is-dragging");
+    });
+    window.addEventListener("mouseup", function () {
+      down = false; row.classList.remove("is-dragging");
+    });
+    window.addEventListener("mousemove", function (e) {
+      if (!down) return;
+      var dx = e.pageX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      row.scrollLeft = startLeft - dx;
+    });
+
+    update();
+    // Layout can settle after fonts load
+    setTimeout(update, 400);
+    window.addEventListener("load", update);
   });
 }
