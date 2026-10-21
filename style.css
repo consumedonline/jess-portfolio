@@ -1984,3 +1984,22 @@ div:has(> .insight-row) > .insight-row {
 .a-num { font-family: 'Fraunces', serif; font-size: 34px; color: var(--proj-to, #2E86E8); justify-content: flex-start; }
 .a-sw { gap: 5px; }
 .a-sw i { display: block; flex: 1; height: 34px; border-radius: 7px; }
+
+
+/* Mobile: SVG diagrams keep a readable minimum size and scroll sideways
+   inside their own box instead of shrinking their labels to a few pixels. */
+@media (max-width: 720px) {
+  div:has(> svg.radial-diagram),
+  div:has(> svg.quadrant-diagram) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  svg.radial-diagram,
+  svg.quadrant-diagram {
+    min-width: 620px;
+    max-width: none;
+  }
+}
